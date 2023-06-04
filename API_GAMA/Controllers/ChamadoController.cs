@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ChamadoController : ControllerBase
     {
@@ -49,7 +49,7 @@ namespace API_GAMA.Controllers
 
         // POST api/<ChamadoController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Chamado chamado)
+        public async Task<IActionResult> Post( Chamado chamado)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace API_GAMA.Controllers
 
         // PUT api/<ChamadoController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Chamado chamado)
+        public async Task<IActionResult> Put(int id,  Chamado chamado)
         {
             try
             {

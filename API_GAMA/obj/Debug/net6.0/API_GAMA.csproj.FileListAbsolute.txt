@@ -81,3 +81,4 @@ C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\Back
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.pdb
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.genruntimeconfig.cache
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\ref\API_GAMA.dll
+C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\Newtonsoft.Json.dll

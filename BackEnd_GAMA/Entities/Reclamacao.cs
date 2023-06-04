@@ -8,9 +8,9 @@
         }
 
         public int Id { get;  set; }
-        public int Autor { get; private set; }
-        public string Texto { get; private set; }
-        public DateTime DataCriacao { get; private set; }
-        public int Destino { get; private set; }
+        public int Autor { get;  set; }
+        public string Texto { get;  set; }
+        public DateTime DataCriacao { get;  set; }
+        public int Destino { get;  set; }
     }
 }

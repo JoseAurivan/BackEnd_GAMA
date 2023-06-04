@@ -14,7 +14,8 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Servidor> builder)
         {
             builder.Property(x => x.Nome);
-            builder.Property(x => x.CPF);
+            builder.Property(x => x.CPF).IsRequired();
+            builder.Property(x => x.Senha);
             builder.HasOne(x => x.Endereco);
             builder.Property(x => x.Telefone);
             builder.Property(x => x.Email);

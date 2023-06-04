@@ -14,9 +14,10 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Cidadao> builder)
         {
             builder.Property(x => x.Nome);
-            builder.Property(x => x.CPF);
+            builder.Property(x => x.CPF).IsRequired(true);
+            builder.Property(x => x.Senha);
             builder.Property(x => x.PISPASEP);
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<Cidadao>(x => x.EnderecoId);
+            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<Cidadao>(x => x.EnderecoId).IsRequired(false);
             builder.Property(x => x.Telefone);
             builder.Property(x => x.Email);
         }

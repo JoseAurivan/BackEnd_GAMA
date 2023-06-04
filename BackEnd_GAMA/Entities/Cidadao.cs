@@ -9,8 +9,8 @@ namespace Core.Entities
 {
     public class Cidadao : User
     {
-        public string PISPASEP { get; private set; }
-        public int EnderecoId { get;private set; }
+        public string PISPASEP { get;  set; }
+        public int? EnderecoId { get; set; }
 
         public Cidadao()
         {

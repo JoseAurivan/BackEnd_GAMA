@@ -4,13 +4,13 @@
     {
         public Cargo()
         {
-
+            
         }
         public int Id { get; set; }
-        public string Nome { get; private set; }
-        public float Salario { get; private set; }
+        public string Nome { get;  set; }
+        public float Salario { get;  set; }
 
-        public Hierarquia Hierarquia { get; private set; }
+        public Hierarquia Hierarquia { get;  set; }
     }
 
     public enum Hierarquia

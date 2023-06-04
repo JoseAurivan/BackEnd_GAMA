@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EnderecoController : ControllerBase
     {
@@ -49,7 +49,7 @@ namespace API_GAMA.Controllers
 
         // POST api/<EnderecoController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Endereco endereco)
+        public async Task<IActionResult> Post( Endereco endereco)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace API_GAMA.Controllers
 
         // PUT api/<EnderecoController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Endereco endereco)
+        public async Task<IActionResult> Put(int id,  Endereco endereco)
         {
             try
             {

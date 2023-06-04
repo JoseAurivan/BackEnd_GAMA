@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SecretariaController : ControllerBase
     {
@@ -49,7 +49,7 @@ namespace API_GAMA.Controllers
 
         // POST api/<SecretariaController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Secretaria secretaria)
+        public async Task<IActionResult> Post(Secretaria secretaria)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace API_GAMA.Controllers
 
         // PUT api/<SecretariaController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Secretaria secretaria)
+        public async Task<IActionResult> Put(int id,  Secretaria secretaria)
         {
             try
             {

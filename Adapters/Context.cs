@@ -38,7 +38,9 @@ namespace Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseSqlServer("Server=localhost,10001;Database=GAMA_DB;User Id=sa;Password=YourStrongPassword*;Trusted_Connection=false; TrustServerCertificate=True; MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Server=localhost,10001;Database=GAMA_DB;" +
+                "User Id=sa;Password=YourStrongPassword*;Trusted_Connection=false;" +
+                " TrustServerCertificate=True; MultipleActiveResultSets=true");
            
         }
     }

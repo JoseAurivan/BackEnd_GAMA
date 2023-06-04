@@ -13,11 +13,11 @@ namespace Core.Entities
         {
 
         }
-        public StatusAtendimento StatusAtendimento { get; private set; }
-        public string Telefone { get; private set; }
+        public StatusAtendimento StatusAtendimento { get;  set; }
+        public string Telefone { get;  set; }
 
-        public int AtendenteId { get; private set; }
-        public int SolicitanteId { get; private set; }
+        public int AtendenteId { get;  set; }
+        public int SolicitanteId { get;  set; }
     }
 
     public enum StatusAtendimento
