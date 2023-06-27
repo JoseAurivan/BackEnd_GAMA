@@ -18,24 +18,24 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteCestaBasicaAsync(CestaBasica CestaBasica)
+        public async Task DeleteCestaBasicaAsync(DTOCestaBasica CestaBasica)
         {
             context.CestaBasicas.Remove(CestaBasica);
             await context.SaveChangesAsync();
         }
 
-        public async Task<CestaBasica> GetCestaBasicaByIdAsync(int id)
+        public async Task<DTOCestaBasica> GetCestaBasicaByIdAsync(int id)
         {
             return await context.CestaBasicas.FirstOrDefaultAsync(x => x.Id == id);
 
         }
 
-        public async Task<IEnumerable<CestaBasica>> GetCestaBasicas()
+        public async Task<IEnumerable<DTOCestaBasica>> GetCestaBasicas()
         {
             return await context.CestaBasicas.ToListAsync();
         }
 
-        public async Task SaveCestaBasicaoAsync(CestaBasica CestaBasica)
+        public async Task SaveCestaBasicaoAsync(DTOCestaBasica CestaBasica)
         {
             if (CestaBasica.Id == default) await context.CestaBasicas.AddAsync(CestaBasica);
             else context.Entry(CestaBasica).State = EntityState.Modified;

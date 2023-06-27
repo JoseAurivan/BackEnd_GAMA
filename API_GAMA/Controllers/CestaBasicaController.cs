@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                cesta.Id = id;
+                //cesta.Id = id;
                 await _cestaService.SaveCestaBasicaAsync(cesta);
                 return Ok();
             }

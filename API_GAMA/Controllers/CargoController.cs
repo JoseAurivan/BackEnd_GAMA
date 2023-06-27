@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                cargo.Id = id;
+                //cargo.Id = id;
                 await _cargoService.SaveCargoAsync(cargo);
                 return Ok();
             }

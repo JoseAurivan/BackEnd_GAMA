@@ -9,19 +9,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class ChamadoConfiguration : IEntityTypeConfiguration<Chamado>
+    internal class ChamadoConfiguration : IEntityTypeConfiguration<DTOChamado>
     {
-        public void Configure(EntityTypeBuilder<Chamado> builder)
+        public void Configure(EntityTypeBuilder<DTOChamado> builder)
         {
-            builder.Property(x => x.Descricao);
-            builder.HasOne(x => x.SolicitadoPor).WithOne().HasForeignKey<Chamado>(x => x.SolicitanteId);
-            builder.HasOne(x => x.SecretariaDestino).WithMany();
-            builder.HasOne(x => x.AtendidoPor).WithOne().HasForeignKey<Chamado>(x => x.AtendenteId);
-            builder.Property(x => x.NumeroProtocolo);
-            builder.Property(x => x.Inicio);
-            builder.Property(x => x.Fim);
+            builder.HasKey(x => x.Id);
+            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOChamado>(x => x.SolicitacaoId);
             builder.Property(x => x.StatusAtendimento);
-            builder.Property(x => x.StatusSolicitacao);
             builder.Property(x => x.Telefone);
         }
     }

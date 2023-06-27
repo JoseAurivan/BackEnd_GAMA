@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                secretaria.Id = id;
+                //secretaria.Id = id;
                 await _secretariaService.SaveScretariaAsync(secretaria);
                 return Ok();
             }

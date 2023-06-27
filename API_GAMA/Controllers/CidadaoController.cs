@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                cidadao.Id = id;
+                //cidadao.Id = id;
                 await _cidadaoService.SaveCidadaoAsync(cidadao);
                 return Ok();
             }

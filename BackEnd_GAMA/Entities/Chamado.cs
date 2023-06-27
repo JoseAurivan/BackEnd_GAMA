@@ -15,9 +15,8 @@ namespace Core.Entities
         }
         public StatusAtendimento StatusAtendimento { get;  set; }
         public string Telefone { get;  set; }
+}
 
-        public int AtendenteId { get;  set; }
-        public int SolicitanteId { get;  set; }
     }
 
     public enum StatusAtendimento

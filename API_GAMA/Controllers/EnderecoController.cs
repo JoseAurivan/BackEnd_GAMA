@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                endereco.Id = id;
+                //endereco.Id = id;
                 await _enderecoService.SaveEnderecoAsync(endereco);
                 return Ok();
             }

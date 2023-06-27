@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                servidor.Id = id;
+                //servidor.Id = id;
                 await _servidorService.SaveServidorAsync(servidor);
                 return Ok();
             }

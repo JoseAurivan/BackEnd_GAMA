@@ -1,5 +1,5 @@
 ﻿using Core.Entities;
-using Core.Entities.Abstract;
+using Infrastructure.DataBaseModels.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,15 +11,17 @@ namespace Infrastructure
 {
     public class Context:DbContext
     {
-        public DbSet<Cidadao>? Cidadoes { get; set; }
-        public DbSet<Servidor>? Servidores { get; set; }
-        public DbSet<Chamado>? Chamados { get; set; }
-        public DbSet<Endereco>? Enderecos { get; set; }
-        public DbSet<CestaBasica>? CestaBasicas { get; set; }
-        public DbSet<Reclamacao>? Reclamacoes { get; set; }
-        public DbSet<Familia>? Familias { get; set; }
-        public DbSet<Secretaria>? Secretarias { get; set; }
-        public DbSet<Cargo>? Cargos { get; set; }
+        public DbSet<DTOCidadao>? Cidadoes { get; set; }
+        public DbSet<DTOServidor>? Servidores { get; set; }
+        public DbSet<DTOChamado>? Chamados { get; set; }
+        public DbSet<DTOEndereco>? Enderecos { get; set; }
+        public DbSet<DTOCestaBasica>? CestaBasicas { get; set; }
+        public DbSet<DTOReclamacao>? Reclamacoes { get; set; }
+        public DbSet<DTOFamilia>? Familias { get; set; }
+        public DbSet<DTOSecretaria>? Secretarias { get; set; }
+        public DbSet<DTOCargo>? Cargos { get; set; }
+        public DbSet<DTOUser>? Users { get; set; }
+        public DbSet<DTOSolicitacao> Solicitacoes { get; set; }
 
 
 
@@ -27,12 +29,6 @@ namespace Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasKey(s => s.Id);
-            modelBuilder.Entity<User>().UseTpcMappingStrategy();
-
-            modelBuilder.Entity<Solicitacao>().HasKey(s => s.Id);
-            modelBuilder.Entity<Solicitacao>().UseTpcMappingStrategy();
-
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

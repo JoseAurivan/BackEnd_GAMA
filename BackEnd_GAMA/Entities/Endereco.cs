@@ -7,7 +7,6 @@
 
         }
 
-        public int Id { get;  set; }
         public string Logradouro { get;  set; }
         public string CEP { get;  set; }
         public string Rua { get;  set; }

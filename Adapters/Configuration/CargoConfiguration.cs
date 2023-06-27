@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class CargoConfiguration : IEntityTypeConfiguration<Cargo>
+    internal class CargoConfiguration : IEntityTypeConfiguration<DTOCargo>
     {
-        public void Configure(EntityTypeBuilder<Cargo> builder)
+        public void Configure(EntityTypeBuilder<DTOCargo> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome);

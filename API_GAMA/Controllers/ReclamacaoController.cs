@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                reclamacao.Id = id;
+                //reclamacao.Id = id;
                 await _reclamacaoService.SaveReclamacaoAsync(reclamacao);
                 return Ok();
             }

@@ -6,7 +6,14 @@
         {
             
         }
-        public int Id { get; set; }
+
+        public Cargo(string nome, float salario, Hierarquia hierarquia)
+        {
+            Nome = nome;
+            Salario = salario;
+            Hierarquia = hierarquia;
+        }
+
         public string Nome { get;  set; }
         public float Salario { get;  set; }
 

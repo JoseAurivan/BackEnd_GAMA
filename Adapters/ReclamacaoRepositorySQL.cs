@@ -18,23 +18,23 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteReclamacaoAsync(Reclamacao Reclamacao)
+        public async Task DeleteReclamacaoAsync(DTOReclamacao Reclamacao)
         {
             context.Reclamacoes.Remove(Reclamacao);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Reclamacao> GetReclamacaoByIdAsync(int id)
+        public async Task<DTOReclamacao> GetReclamacaoByIdAsync(int id)
         {
             return await context.Reclamacoes.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Reclamacao>> GetReclamacaos()
+        public async Task<IEnumerable<DTOReclamacao>> GetReclamacaos()
         {
             return await context.Reclamacoes.ToListAsync();
         }
 
-        public async Task SaveReclamacaoAsync(Reclamacao Reclamacao)
+        public async Task SaveReclamacaoAsync(DTOReclamacao Reclamacao)
         {
             if (Reclamacao.Id == default) await context.Reclamacoes.AddAsync(Reclamacao);
             else context.Entry(Reclamacao).State = EntityState.Modified;

@@ -18,7 +18,6 @@ namespace Core.Entities
         public string Matricula { get;  set; }
         public Secretaria Secretaria { get; private set; }
         public Cargo Cargo { get; private set; }
-        public int CargoId { get; private set; }
 
 
 

@@ -18,23 +18,23 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteSecretariaAsync(Secretaria Secretaria)
+        public async Task DeleteSecretariaAsync(DTOSecretaria Secretaria)
         {
             context.Secretarias.Remove(Secretaria);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Secretaria> GetSecretariaByIdAsync(int id)
+        public async Task<DTOSecretaria> GetSecretariaByIdAsync(int id)
         {
             return await context.Secretarias.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Secretaria>> GetSecretarias()
+        public async Task<IEnumerable<DTOSecretaria>> GetSecretarias()
         {
             return await context.Secretarias.ToListAsync();
         }
 
-        public async Task SaveSecretariaAsync(Secretaria Secretaria)
+        public async Task SaveSecretariaAsync(DTOSecretaria Secretaria)
         {
             if (Secretaria.Id == default) await context.Secretarias.AddAsync(Secretaria);
             else context.Entry(Secretaria).State = EntityState.Modified;

@@ -14,9 +14,7 @@ namespace Core.Entities
 
         }
         public Endereco Endereco { get;  set; }
-        public string SituacaoDescricao { get;  set; }
         public Familia Familia { get;  set; }
-        public int EnderecoId { get;  set; }
 
     }
 }

@@ -13,24 +13,24 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteCidadaoAsync(Cidadao cidadao)
+        public async Task DeleteCidadaoAsync(DTOCidadao cidadao)
         {
             context.Cidadoes?.Remove(cidadao);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Cidadao>? GetCidadaoByIdAsync(int id)
+        public async Task<DTOCidadao>? GetCidadaoByIdAsync(int id)
         {
             return await context.Cidadoes.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Cidadao>> GetCidadaos()
+        public async Task<IEnumerable<DTOCidadao>> GetCidadaos()
         {
-            return await context.Cidadoes.ToListAsync<Cidadao>();
+            return await context.Cidadoes.ToListAsync<DTOCidadao>();
         }
 
 
-        public async Task SaveCidadaoAsync(Cidadao cidadao)
+        public async Task SaveCidadaoAsync(DTOCidadao cidadao)
         {
             if (cidadao.Id == default) await context.Cidadoes.AddAsync(cidadao);
             else context.Entry(cidadao).State = EntityState.Modified;

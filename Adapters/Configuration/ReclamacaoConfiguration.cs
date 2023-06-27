@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class ReclamacaoConfiguration : IEntityTypeConfiguration<Reclamacao>
+    internal class ReclamacaoConfiguration : IEntityTypeConfiguration<DTOReclamacao>
     {
-        public void Configure(EntityTypeBuilder<Reclamacao> builder)
+        public void Configure(EntityTypeBuilder<DTOReclamacao> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Destino);
+            builder.HasOne(x => x.Destino).WithOne().HasForeignKey<DTOReclamacao>(x => x.DestinoId);
             builder.Property(x => x.Texto);
             builder.Property(x => x.DataCriacao);
-            builder.Property(x => x.Autor);
+            builder.HasOne(x => x.Autor).WithOne().HasForeignKey<DTOReclamacao>(x => x.AutorId);
             
         }
     }

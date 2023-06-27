@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                chamado.Id = id;
+                //chamado.Id = id;
                 await _chamadoService.SaveChamadoAsync(chamado);
                 return Ok();
             }

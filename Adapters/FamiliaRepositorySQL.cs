@@ -12,23 +12,23 @@ namespace Infrastructure
     public class FamiliaRepositorySQL : IFamiliaRepository
     {
         private Context context;
-        public async Task DeleteFamiliaAsync(Familia Familia)
+        public async Task DeleteFamiliaAsync(DTOFamilia Familia)
         {
             context.Familias.Remove(Familia);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Familia> GetFamiliaByIdAsync(int id)
+        public async Task<DTOFamilia> GetFamiliaByIdAsync(int id)
         {
             return await context.Familias.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Familia>> GetFamilias()
+        public async Task<IEnumerable<DTOFamilia>> GetFamilias()
         {
             return await context.Familias.ToListAsync();
         }
 
-        public async Task SaveFamiliaAsync(Familia Familia)
+        public async Task SaveFamiliaAsync(DTOFamilia Familia)
         {
             if (Familia.Id == default) await context.Familias.AddAsync(Familia);
             else context.Entry(Familia).State = EntityState.Modified;

@@ -13,23 +13,23 @@ namespace Infrastructure
     {
         private Context context;
 
-        public async Task DeleteServidorAsync(Servidor Servidor)
+        public async Task DeleteServidorAsync(DTOServidor Servidor)
         {
             context.Servidores.Remove(Servidor);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Servidor> GetServidorByIdAsync(int id)
+        public async Task<DTOServidor> GetServidorByIdAsync(int id)
         {
             return await context.Servidores.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Servidor>> GetServidors()
+        public async Task<IEnumerable<DTOServidor>> GetServidors()
         {
             return await context.Servidores.ToListAsync();
         }
 
-        public async Task SaveServidorAsync(Servidor Servidor)
+        public async Task SaveServidorAsync(DTOServidor Servidor)
         {
             if (Servidor.Id == default) await context.Servidores.AddAsync(Servidor);
             else context.Entry(Servidor).State = EntityState.Modified;

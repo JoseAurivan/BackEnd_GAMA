@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                familia.Id = id;
+                //familia.Id = id;
                 await _familiaService.SaveFamiliaAsync(familia);
                 return Ok();
             }
