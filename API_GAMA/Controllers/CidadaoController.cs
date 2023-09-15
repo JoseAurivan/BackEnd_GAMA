@@ -2,12 +2,12 @@
 using Core.Services;
 using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-
+using SuporteFront;
+using System.Text.Json;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CidadaoController : ControllerBase
     {
@@ -46,14 +46,14 @@ namespace API_GAMA.Controllers
                 return NoContent();
             }
         }
-
-        // POST api/<CidadaoController>
         [HttpPost]
-        public async Task<IActionResult> Post(Cidadao cidadao)
+        public async Task<IActionResult> Post(CidadaoEnderecoViewModel cidadaoEndereco)
         {
+
+           
             try
-            {
-                await _cidadaoService.SaveCidadaoAsync(cidadao);
+            {               
+                await _cidadaoService.SaveCidadaoAsync(cidadaoEndereco.Cidadao);
                 return Ok();
             }
             catch (Exception ex)

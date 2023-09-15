@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Repository;
+using Infrastructure.DataBaseModels.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
@@ -13,27 +14,65 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteCidadaoAsync(DTOCidadao cidadao)
+        public async Task<Cidadao> AuthenticateCidadao(string cpf, string password)
         {
-            context.Cidadoes?.Remove(cidadao);
+           var cidadaoDTO = await context.Cidadoes
+                .Include(x => x.User)
+                .Where(x => x.User.CPF == cpf && x.User.Senha == password)
+                .FirstOrDefaultAsync();
+
+            if(cidadaoDTO is not null)
+                return cidadaoDTO.ConverterDTOParaModel(cidadaoDTO);
+
+            return null;
+        }
+
+        public async Task DeleteCidadaoAsync(Cidadao cidadao)
+        {
+            var userDTO = await context.Users.FirstOrDefaultAsync(x => x.Id == cidadao.Id);
+            
+            context.Users.Remove(userDTO);
             await context.SaveChangesAsync();
         }
 
-        public async Task<DTOCidadao>? GetCidadaoByIdAsync(int id)
+        public async Task<Cidadao>? GetCidadaoByIdAsync(int id)
         {
-            return await context.Cidadoes.FirstOrDefaultAsync(x => x.Id == id);
+            var cidadaoDTO = await context.Cidadoes.Where(x => x.UserId == id).Include(x => x.User).FirstOrDefaultAsync();
+
+            return cidadaoDTO.ConverterDTOParaModel(cidadaoDTO);
+                
         }
 
-        public async Task<IEnumerable<DTOCidadao>> GetCidadaos()
+        public async Task<IEnumerable<Cidadao>> GetCidadaos()
         {
-            return await context.Cidadoes.ToListAsync<DTOCidadao>();
+
+            var cidadoDTOList = await context.Cidadoes.ToListAsync<DTOCidadao>();
+            List<Cidadao> cidadaos = new List<Cidadao>();
+            foreach(DTOCidadao cidadao in cidadoDTOList)
+            {
+                var user = await context.Users.FirstOrDefaultAsync(x => x.Id == cidadao.UserId);
+                cidadao.User = user;
+                cidadaos.Add(cidadao.ConverterDTOParaModel(cidadao));
+            }
+            return cidadaos;
         }
 
 
-        public async Task SaveCidadaoAsync(DTOCidadao cidadao)
+        public async Task SaveCidadaoAsync(Cidadao cidadao)
         {
-            if (cidadao.Id == default) await context.Cidadoes.AddAsync(cidadao);
-            else context.Entry(cidadao).State = EntityState.Modified;
+            var userDTO = new DTOUser(cidadao.Nome,cidadao.CPF,cidadao.Senha, cidadao.Email, cidadao.Telefone);
+            var cidadaoDTO = new DTOCidadao(userDTO, cidadao.PISPASEP);
+            if (cidadao.Id == default)
+            {
+                context.Users.Add(userDTO);
+                context.Cidadoes.Add(cidadaoDTO);
+
+            }
+            else
+            {
+                context.Entry(userDTO).State = EntityState.Modified;
+                context.Entry(cidadaoDTO).State = EntityState.Modified;  
+            }
 
             await context.SaveChangesAsync();
         }

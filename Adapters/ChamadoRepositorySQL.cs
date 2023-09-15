@@ -1,5 +1,7 @@
 ﻿using Core.Entities;
+using Core.Entities.Abstract;
 using Core.Repository;
+using Infrastructure.DataBaseModels.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,26 +20,68 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteChamadoAsync(DTOChamado Chamado)
+        public async Task DeleteChamadoAsync(Chamado Chamado)
         {
-            context.Chamados.Remove(Chamado);
+            var chamadoDTO = context.Chamados.Where(x => x.SolicitacaoId == Chamado.Id).Include(x => x.Solicitacao).FirstOrDefault();
+            context.Chamados.Remove(chamadoDTO);
+            context.Solicitacoes.Remove(chamadoDTO.Solicitacao);
             await context.SaveChangesAsync();
         }
 
-        public async Task<DTOChamado> GetChamadoByIdAsync(int id)
+        public async Task<Chamado> GetChamadoByIdAsync(int id)
         {
-            return await context.Chamados.FirstOrDefaultAsync(x => x.Id == id);
+            var chamadoDTO = await context.Chamados.Where(x => x.SolicitacaoId == id).Include(x => x.Solicitacao).FirstOrDefaultAsync();
+            var solicitadoPorDTO = await context.Users.FirstOrDefaultAsync(x => x.Id == chamadoDTO.Solicitacao.SolicitadoPorId);
+            var atendidoPorDTO = await context.Servidores.FirstOrDefaultAsync( x=> x.UserId == chamadoDTO.Solicitacao.AtendidoPorId);
+            var secretariaDTO = await context.Secretarias.FirstOrDefaultAsync( x=> x.Id == chamadoDTO.Solicitacao.SecretariaId);
+
+            return chamadoDTO.ConverterDTOParaModel(chamadoDTO, secretariaDTO, solicitadoPorDTO, atendidoPorDTO);
+
         }
 
-        public async Task<IEnumerable<DTOChamado>> GetChamados()
+        public async Task<IEnumerable<Chamado>> GetChamados()
         {
-            return await context.Chamados.ToListAsync();
+            var chamadosDTO = await context.Chamados.Include(x => x.Solicitacao).ToListAsync();
+            List<Chamado> chamados = new List<Chamado>();
+            foreach(DTOChamado chamadoDTO in chamadosDTO)
+            {
+                var solicitadoPorDTO = await context.Users.FirstOrDefaultAsync(x => x.Id == chamadoDTO.Solicitacao.SolicitadoPorId);
+                var atendidoPorDTO = await context.Servidores.FirstOrDefaultAsync(x => x.UserId == chamadoDTO.Solicitacao.AtendidoPorId);
+                var secretariaDTO = await context.Secretarias.FirstOrDefaultAsync(x => x.Id == chamadoDTO.Solicitacao.SecretariaId);
+                chamados.Add(chamadoDTO.ConverterDTOParaModel(chamadoDTO, secretariaDTO, solicitadoPorDTO, atendidoPorDTO));
+            }
+            return chamados;
+            
         }
 
-        public async Task SaveChamadooAsync(DTOChamado Chamado)
+        public async Task SaveChamadooAsync(Chamado Chamado)
         {
-            if (Chamado.Id == default) await context.Chamados.AddAsync(Chamado);
-            else context.Entry(Chamado).State = EntityState.Modified;
+            var secretaria = await context.Secretarias.FirstOrDefaultAsync(x => x.Id == Chamado.SecretariaDestino.Id);
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == Chamado.SolicitadoPor.Id);
+            var servidor =await context.Servidores.FirstOrDefaultAsync(x => x.UserId == Chamado.AtendidoPor.Id);
+
+            var solicitacaoDTO = new DTOSolicitacao(Chamado.Descricao,Chamado.Descricao,
+                Chamado.StatusSolicitacao,secretaria,user,servidor,Chamado.Inicio,Chamado.Fim);
+
+            var chamadoDTO = new DTOChamado(solicitacaoDTO,Chamado.StatusAtendimento,Chamado.Telefone);
+
+            secretaria.Solicitacoes.Add(solicitacaoDTO);
+            user.Solicitacao.Add(solicitacaoDTO);
+
+            if (Chamado.Id == default)
+            {
+                await context.Chamados.AddAsync(chamadoDTO);
+                await context.Solicitacoes.AddAsync(solicitacaoDTO);
+            }
+            else
+            {
+                context.Entry(chamadoDTO).State = EntityState.Modified;
+                context.Entry(solicitacaoDTO).State = EntityState.Modified;
+            }
+
+            context.Entry(servidor).State = EntityState.Modified;
+            context.Entry(secretaria).State = EntityState.Modified;
+            context.Entry(user).State = EntityState.Modified;
 
             await context.SaveChangesAsync();
         }

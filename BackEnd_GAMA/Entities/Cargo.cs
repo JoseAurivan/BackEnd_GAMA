@@ -14,6 +14,8 @@
             Hierarquia = hierarquia;
         }
 
+        public int Id { get; set; }
+
         public string Nome { get;  set; }
         public float Salario { get;  set; }
 

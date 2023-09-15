@@ -18,26 +18,35 @@ namespace Infrastructure
             this.context = context;
         }
 
-        public async Task DeleteEnderecoAsync(DTOEndereco Endereco)
+        public async Task DeleteEnderecoAsync(Endereco Endereco)
         {
-            context.Enderecos.Remove(Endereco);
+            DTOEndereco endereco = new DTOEndereco(Endereco.Id);
+            context.Enderecos.Remove(endereco);
             await context.SaveChangesAsync();
         }
 
-        public async Task<DTOEndereco> GetEnderecoByIdAsync(int id)
+        public async Task<Endereco> GetEnderecoByIdAsync(int id)
         {
-            return await context.Enderecos.FirstOrDefaultAsync(x => x.Id == id);
+            var enderecoDTO =  await context.Enderecos.FirstOrDefaultAsync(x => x.Id == id);
+            return enderecoDTO.ConverterDTOParaModel(enderecoDTO.Id,enderecoDTO.Logradouro,enderecoDTO.CEP,enderecoDTO.Rua,enderecoDTO.Bairro);
         }
 
-        public async Task<IEnumerable<DTOEndereco>> GetEnderecos()
+        public async Task<IEnumerable<Endereco>> GetEnderecos()
         {
-            return await context.Enderecos.ToListAsync();
+            List<Endereco> enderecos = new List<Endereco>();
+            var DTOenderecos =  await context.Enderecos.ToListAsync();
+            foreach(DTOEndereco enderecoDTO in DTOenderecos)
+            {
+                enderecos.Add(enderecoDTO.ConverterDTOParaModel(enderecoDTO.Id, enderecoDTO.Logradouro, enderecoDTO.CEP, enderecoDTO.Rua, enderecoDTO.Bairro));
+            }
+            return enderecos;
         }
 
-        public async Task SaveEnderecoAsync(DTOEndereco Endereco)
+        public async Task SaveEnderecoAsync(Endereco Endereco)
         {
-            if (Endereco.Id == default) await context.Enderecos.AddAsync(Endereco);
-            else context.Entry(Endereco).State = EntityState.Modified;
+            DTOEndereco enderecoDTO = new DTOEndereco(Endereco.Logradouro,Endereco.CEP,Endereco.Rua,Endereco.Bairro);
+            if (Endereco.Id == default) await context.Enderecos.AddAsync(enderecoDTO);
+            else context.Entry(enderecoDTO).State = EntityState.Modified;
 
             await context.SaveChangesAsync();
         }

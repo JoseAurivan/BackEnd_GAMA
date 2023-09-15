@@ -14,8 +14,8 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<DTOFamilia> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasMany(x => x.Membros).WithOne(x => x.Familia);
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOFamilia>(x => x.EnderecoId);
+            builder.HasMany(x => x.Membros).WithOne(x => x.Familia).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOFamilia>(x => x.EnderecoId).OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(x => x.Cestas).WithOne(x => x.Familia).OnDelete(DeleteBehavior.Restrict);
         }
     }

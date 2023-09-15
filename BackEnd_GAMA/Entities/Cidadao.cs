@@ -10,7 +10,6 @@ namespace Core.Entities
     public class Cidadao : User
     {
         public string PISPASEP { get;  set; }
-
         public Cidadao()
         {
 
@@ -21,7 +20,24 @@ namespace Core.Entities
             return null;
         }
 
+        public Cidadao(string pispasep, string cpf, int id, string nome, string email, string telefone)
+        {
+            PISPASEP= pispasep;
+            CPF= cpf;
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Telefone = telefone;
+        }
 
+        public Cidadao( string cpf, int id, string nome, string email, string telefone)
+        {
+            CPF = cpf;
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Telefone = telefone;
+        }
 
     }
 }

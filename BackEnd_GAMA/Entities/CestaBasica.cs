@@ -13,6 +13,18 @@ namespace Core.Entities
         {
 
         }
+
+        public CestaBasica(Endereco endereco, Familia familia, int idSolicitacao, string numeroProtocolo, string descricao, StatusSolicitacao statusSolicitacao)
+        {
+            Id = idSolicitacao;   
+            Endereco = endereco;
+            Familia = familia;
+            NumeroProtocolo = numeroProtocolo; 
+            Descricao = descricao;
+            StatusSolicitacao = statusSolicitacao;
+
+        }
+
         public Endereco Endereco { get;  set; }
         public Familia Familia { get;  set; }
 

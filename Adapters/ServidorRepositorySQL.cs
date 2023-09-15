@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Repository;
+using Infrastructure.DataBaseModels.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,30 +10,82 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public class ServidorRepositorySQL:IServidorRepository
+    public class ServidorRepositorySQL : IServidorRepository
     {
         private Context context;
 
-        public async Task DeleteServidorAsync(DTOServidor Servidor)
+        public async Task<Servidor> AuthenticateServidor(string matricula, string password)
         {
-            context.Servidores.Remove(Servidor);
+            var servidorDTO = await context.Servidores
+            .Include(x => x.User)
+            .Where(x => x.Matricula == matricula && x.User.Senha == password)
+            .FirstOrDefaultAsync();
+
+            if (servidorDTO is not null)
+                return servidorDTO.ConverterDTOParaModel(servidorDTO);
+
+            return null;
+        }
+
+        public async Task DeleteServidorAsync(Servidor Servidor)
+        {
+            var servidorDTO = new DTOUser(Servidor.Id);
+            context.Users.Remove(servidorDTO);
             await context.SaveChangesAsync();
         }
 
-        public async Task<DTOServidor> GetServidorByIdAsync(int id)
+        public async Task<Servidor> GetServidorByIdAsync(int id)
         {
-            return await context.Servidores.FirstOrDefaultAsync(x => x.Id == id);
+            var servidorDTO = await context.Servidores
+                .Where(x => x.UserId == id)
+                .Include(x => x.User)
+                .Include(x => x.Secretaria)
+                .Include(x => x.Cargo)
+                .FirstOrDefaultAsync();
+
+            var secretariaDTO = servidorDTO.Secretaria;
+            var cargoDTO = servidorDTO.Cargo;
+
+            var secretaria = secretariaDTO.ConverterDTOParaModel(secretariaDTO);
+            var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
+
+            return servidorDTO.ConverterDTOParaModel(servidorDTO, cargo, secretaria);
         }
 
-        public async Task<IEnumerable<DTOServidor>> GetServidors()
+        public async Task<IEnumerable<Servidor>> GetServidors()
         {
-            return await context.Servidores.ToListAsync();
+            var servidoresDTO = await context.Servidores
+                .Include(x => x.User)
+                .Include(x => x.Cargo)
+                .ToListAsync();
+
+            List<Servidor> servidores = new List<Servidor>();
+
+            foreach (var servidorDTO in servidoresDTO)
+            {
+                var cargoDTO = servidorDTO.Cargo;
+                var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
+
+                servidores.Add(servidorDTO.ConverterDTOParaModel(servidorDTO, cargo));
+            }
+
+            return servidores;
         }
 
-        public async Task SaveServidorAsync(DTOServidor Servidor)
+        public async Task SaveServidorAsync(Servidor Servidor)
         {
-            if (Servidor.Id == default) await context.Servidores.AddAsync(Servidor);
-            else context.Entry(Servidor).State = EntityState.Modified;
+            var userDTO = new DTOUser(Servidor.Id, Servidor.Nome, Servidor.CPF, Servidor.Senha, new DTOEndereco(), Servidor.Email, Servidor.Telefone);
+            var servidorDTO = new DTOServidor(Servidor.Id, Servidor.Matricula, Servidor.Secretaria.Id, Servidor.Cargo.Id);
+            if (servidorDTO.UserId == default)
+            {
+                context.Users.Add(userDTO);
+                context.Servidores.Add(servidorDTO);
+            }
+            else
+            {
+                context.Entry(servidorDTO).State = EntityState.Modified;
+                context.Entry(userDTO).State = EntityState.Modified;
+            }
 
             await context.SaveChangesAsync();
         }

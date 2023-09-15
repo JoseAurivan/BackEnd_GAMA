@@ -17,9 +17,9 @@ namespace Infrastructure.Configuration
             builder.Property(x => x.Descricao);
             builder.Property(x => x.NumeroProtocolo);
             builder.Property(x => x.StatusSolicitacao);
-            builder.HasOne(x => x.SecretariaDestino).WithMany(x => x.Solicitacoes).HasForeignKey(x => x.SecretariaId);
-            builder.HasOne(x => x.SolicitadoPor).WithMany(x => x.Solicitacao).HasForeignKey(x => x.SolicitadoPorId);
-            builder.HasOne(x => x.AtendidoPor).WithOne().HasForeignKey<DTOSolicitacao>(x => x.AtendidoPorId);
+            builder.HasOne(x => x.SecretariaDestino).WithMany(x => x.Solicitacoes).HasForeignKey(x => x.SecretariaId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.SolicitadoPor).WithMany(x => x.Solicitacao).HasForeignKey(x => x.SolicitadoPorId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.AtendidoPor).WithOne().HasForeignKey<DTOSolicitacao>(x => x.AtendidoPorId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.Inicio);
             builder.Property(x => x.Fim);
            

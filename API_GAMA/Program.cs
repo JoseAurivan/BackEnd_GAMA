@@ -4,6 +4,9 @@ using Core.Repository;
 using Core.Services;
 using Core.Services.Interfaces;
 using Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 
 
@@ -26,6 +29,24 @@ builder.Services.AddFamiliaAdapter();
 builder.Services.AddReclamacaoAdapter();
 builder.Services.AddSecretariaAdapter();
 builder.Services.AddServidorAdapter();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+    };
+});
+builder.Services.AddAuthorization();
 
 builder.Services.AddHttpClient();
 
@@ -57,9 +78,11 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseRouting();
-app.UseCors();
+app.UseCors(); 
 
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UseEndpoints(endpoints =>
 {

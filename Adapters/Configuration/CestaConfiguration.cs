@@ -13,10 +13,10 @@ namespace Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<DTOCestaBasica> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOCestaBasica>(x => x.SolcitacaoID);
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOCestaBasica>(x => x.EnderecoId);
-            builder.HasOne(x => x.Familia).WithMany(x => x.Cestas);
+            builder.HasKey(x => x.SolcitacaoID);
+            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOCestaBasica>(x => x.SolcitacaoID).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOCestaBasica>(x => x.EnderecoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Familia).WithMany(x => x.Cestas).HasForeignKey(x => x.FamiliaId).OnDelete(DeleteBehavior.Restrict);
 
         }
     }

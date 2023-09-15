@@ -7,17 +7,32 @@ using Infrastructure.DataBaseModels.Entities;
 
 namespace Core.Entities
 {
-    public class DTOChamado 
+    public class DTOChamado
     {
         public DTOChamado()
         {
 
         }
-        public int Id { get; set; }
+        public DTOChamado(DTOSolicitacao? solicitacao, StatusAtendimento statusAtendimento, string telefone)
+        {
+            Solicitacao = solicitacao;
+            StatusAtendimento = statusAtendimento;
+            Telefone = telefone;
+        }
+
         public int SolicitacaoId { get; set; }
-        public DTOSolicitacao? Solicitacao { get; set; } 
-        public StatusAtendimento StatusAtendimento { get;  set; }
-        public string Telefone { get;  set; }
+        public DTOSolicitacao? Solicitacao { get; set; }
+        public StatusAtendimento StatusAtendimento { get; set; }
+        public string Telefone { get; set; }
+
+        public Chamado ConverterDTOParaModel(DTOChamado chamadoDTO, DTOSecretaria secretaria, DTOUser user, DTOServidor servidor)
+        {
+            Chamado chamado = new Chamado(chamadoDTO.StatusAtendimento, chamadoDTO.Telefone, chamadoDTO.Solicitacao.StatusSolicitacao,
+                secretaria.ConverterDTOParaModel(secretaria), chamadoDTO.Solicitacao.NumeroProtocolo, chamadoDTO.Solicitacao.Descricao, user.ConverterParaModel(user),
+               servidor.ConverterDTOParaModel(servidor), chamadoDTO.Solicitacao.Inicio);
+
+            return chamado;
+        }
 
     }
 

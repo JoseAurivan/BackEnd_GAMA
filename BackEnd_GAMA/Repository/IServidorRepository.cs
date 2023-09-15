@@ -10,6 +10,7 @@ namespace Core.Repository
     public interface IServidorRepository
     {
         Task<IEnumerable<Servidor>> GetServidors();
+        Task<Servidor> AuthenticateServidor(string matricula, string password);
         Task<Servidor> GetServidorByIdAsync(int id);
         Task SaveServidorAsync(Servidor Servidor);
         Task DeleteServidorAsync(Servidor Servidor);

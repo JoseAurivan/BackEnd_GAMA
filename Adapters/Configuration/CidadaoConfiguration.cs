@@ -15,7 +15,7 @@ namespace Infrastructure.Configuration
         {
             builder.HasKey(x => x.UserId);
             builder.Property(x => x.PISPASEP);
-            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOCidadao>(x => x.UserId);
+            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOCidadao>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
 
         }
     }

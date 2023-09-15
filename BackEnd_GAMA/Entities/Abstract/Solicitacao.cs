@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities.Abstract
 {
-    public abstract class Solicitacao
+    public  class Solicitacao
     {
         public int Id { get; set; }
         public string Descricao { get;  set; }

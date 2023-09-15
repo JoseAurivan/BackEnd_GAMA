@@ -16,7 +16,7 @@ namespace Infrastructure.Configuration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Telefone);
             builder.Property(x => x.CNPJ);
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOSecretaria>(x => x.EnderecoId);
+            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOSecretaria>(x => x.EnderecoId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.Nome);
         }
     }

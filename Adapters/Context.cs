@@ -34,10 +34,9 @@ namespace Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseSqlServer("Server=localhost,10001;Database=GAMA_DB;" +
-                "User Id=sa;Password=YourStrongPassword*;Trusted_Connection=false;" +
-                " TrustServerCertificate=True; MultipleActiveResultSets=true");
-           
+            optionsBuilder.UseNpgsql("Server=172.22.227.252;Port=5432;Database=gama_db;" +
+                "Username = admin;Password =240400;Timeout = 300;CommandTimeout = 300");
+
         }
     }
 }

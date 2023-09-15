@@ -20,8 +20,9 @@ namespace Infrastructure
 
         public async Task DeleteCargoAsync(Cargo Cargo)
         {
-            DTOCargo cargo = new DTOCargo(Cargo.Nome, Cargo.Salario, Cargo.Hierarquia);
-            context.Cargos.Remove(cargo);
+            DTOCargo cargo = await context.Cargos.FirstOrDefaultAsync(x => x.Id== Cargo.Id);
+            if(cargo is not null)
+                context.Cargos.Remove(cargo);
             await context.SaveChangesAsync();
         }
 
@@ -48,8 +49,10 @@ namespace Infrastructure
 
         public async Task SaveCargoAsync(Cargo Cargo)
         {
-            if (id == default) await context.Cargos.AddAsync(Cargo);
-            else context.Entry(Cargo).State = EntityState.Modified;
+            DTOCargo cargo = new DTOCargo(Cargo.Nome, Cargo.Salario, Cargo.Hierarquia);
+
+            if (Cargo.Id == default) await context.Cargos.AddAsync(cargo);
+            else context.Entry(cargo).State = EntityState.Modified;
 
             await context.SaveChangesAsync();
         }
