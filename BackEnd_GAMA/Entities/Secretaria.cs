@@ -12,8 +12,8 @@ namespace Core.Entities
         public ICollection<Servidor>? Servidores { get;  set; }
 
         public ICollection<Solicitacao>? Solicitacoes { get;  set; }
-        public Endereco Endereco { get;  set; }
-        public int EnderecoId { get;  set; }
+        public Endereco? Endereco { get;  set; }
+        public int? EnderecoId { get;  set; }
 
         public Secretaria()
         {

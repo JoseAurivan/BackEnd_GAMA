@@ -161,7 +161,7 @@ namespace Infrastructure.Migrations
                     b.Property<int>("AutorId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DataCriacao")
+                    b.Property<DateTimeOffset>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("DestinoId")
@@ -229,8 +229,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("CargoId")
-                        .IsUnique();
+                    b.HasIndex("CargoId");
 
                     b.HasIndex("SecretariaId");
 
@@ -245,17 +244,17 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AtendidoPorId")
+                    b.Property<int?>("AtendidoPorId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Fim")
+                    b.Property<DateTimeOffset?>("Fim")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Inicio")
+                    b.Property<DateTimeOffset>("Inicio")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NumeroProtocolo")
@@ -422,9 +421,9 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.DTOServidor", b =>
                 {
                     b.HasOne("Core.Entities.DTOCargo", "Cargo")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.DTOServidor", "CargoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("Servidors")
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.DTOSecretaria", "Secretaria")
@@ -451,8 +450,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.DTOServidor", "AtendidoPor")
                         .WithOne()
                         .HasForeignKey("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "AtendidoPorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Core.Entities.DTOSecretaria", "SecretariaDestino")
                         .WithMany("Solicitacoes")
@@ -481,6 +479,11 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOCargo", b =>
+                {
+                    b.Navigation("Servidors");
                 });
 
             modelBuilder.Entity("Core.Entities.DTOFamilia", b =>

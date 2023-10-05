@@ -34,6 +34,15 @@ namespace Core.Entities
             return chamado;
         }
 
+        public Chamado ConverterDTOParaModel(DTOChamado chamadoDTO, DTOSecretaria secretaria, DTOUser user)
+        {
+            Chamado chamado = new Chamado(chamadoDTO.StatusAtendimento, chamadoDTO.Telefone, chamadoDTO.Solicitacao.StatusSolicitacao,
+                secretaria.ConverterDTOParaModel(secretaria), chamadoDTO.Solicitacao.NumeroProtocolo, chamadoDTO.Solicitacao.Descricao, user.ConverterParaModel(user),
+                chamadoDTO.Solicitacao.Inicio);
+
+            return chamado;
+        }
+
     }
 
 }

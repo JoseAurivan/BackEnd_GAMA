@@ -18,6 +18,7 @@ namespace Infrastructure.Configuration
             builder.Property(x => x.Email);
             builder.Property(x => x.Senha);
             builder.Property(x => x.Telefone);
+            builder.Property(x => x.CPF);
             builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOUser>(x => x.EnderecoId).OnDelete(DeleteBehavior.Restrict);
         }
     }

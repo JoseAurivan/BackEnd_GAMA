@@ -39,7 +39,44 @@ namespace Core.Entities
             Cargo = cargo;
         }
 
-        public int Id { get; set; }
+        public Servidor(string nome, string cpf, string matricula, string senha, string telefone, string email, Secretaria secretaria, Cargo cargo)
+        {
+            Nome = nome;
+            CPF = cpf;
+            Matricula = matricula;
+            Secretaria = secretaria;
+            Cargo = cargo;
+            Senha = senha;
+            Telefone = telefone;
+            Email = email;
+        }
+
+        public Servidor(int id,string nome, string cpf, string matricula, string senha, string telefone, string email, Secretaria secretaria, Cargo cargo)
+        {
+            Id = id;
+            Nome = nome;
+            CPF = cpf;
+            Matricula = matricula;
+            Secretaria = secretaria;
+            Cargo = cargo;
+            Senha = senha;
+            Telefone = telefone;
+            Email = email;
+        }
+
+        public Servidor(int id, string nome, string cpf, string matricula, string senha, string telefone, string email, Cargo cargo)
+        {
+            Id = id;
+            Nome = nome;
+            CPF = cpf;
+            Matricula = matricula;
+            Cargo = cargo;
+            Senha = senha;
+            Telefone = telefone;
+            Email = email;
+        }
+
+
         public string Matricula { get;  set; }
         public Secretaria Secretaria { get; private set; }
         public Cargo Cargo { get; private set; }

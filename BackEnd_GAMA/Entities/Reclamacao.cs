@@ -7,7 +7,15 @@
 
         }
 
-        public Reclamacao(int id, Cidadao autor, string texto, DateTime dataCriacao, Secretaria destino)
+        public Reclamacao(Cidadao autor, string texto, DateTimeOffset dataCriacao, Secretaria destino)
+        {
+            Autor = autor;
+            Texto = texto;
+            DataCriacao = dataCriacao;
+            Destino = destino;
+        }
+
+        public Reclamacao(int id, Cidadao autor, string texto, DateTimeOffset dataCriacao, Secretaria destino)
         {
             Id = id;
             Autor = autor;
@@ -19,7 +27,7 @@
         public int Id { get; set; }
         public Cidadao Autor { get;  set; }
         public string Texto { get;  set; }
-        public DateTime DataCriacao { get;  set; }
+        public DateTimeOffset DataCriacao { get;  set; }
         public Secretaria Destino { get;  set; }
     }
 }

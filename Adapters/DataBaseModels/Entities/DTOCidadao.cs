@@ -22,13 +22,13 @@ namespace Core.Entities
 
         public DTOCidadao(DTOUser? user,string pISPASEP)
         {
-            User = user;
+            UserId = user.Id;
             PISPASEP = pISPASEP;
         }
 
         public Cidadao ConverterDTOParaModel(DTOCidadao cidadaoDTO)
         {
-            return new Cidadao(cidadaoDTO.PISPASEP, cidadaoDTO.User.CPF, cidadaoDTO.UserId, cidadaoDTO.User.Nome,cidadaoDTO.User.Email,cidadaoDTO.User.Telefone) ;
+            return new Cidadao(cidadaoDTO.PISPASEP, cidadaoDTO.User.CPF, cidadaoDTO.UserId, cidadaoDTO.User.Nome,cidadaoDTO.User.Email,cidadaoDTO.User.Telefone,cidadaoDTO.User.Senha);
         }
     }
 }

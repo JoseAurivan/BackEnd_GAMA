@@ -4136,11 +4136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
+      "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
       "projectName": "API_GAMA",
-      "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
+      "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
       "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\obj\\",
+      "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -4163,14 +4163,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj"
+            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj"
             },
-            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
-              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
+            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
+              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
             },
-            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj": {
-              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj"
+            "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj": {
+              "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj"
             }
           }
         }

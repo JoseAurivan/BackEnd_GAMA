@@ -47,5 +47,10 @@ namespace API_GAMA
             return services.AddScoped<IServidorRepository,ServidorRepositorySQL>().AddScoped<IServidorService,ServidorService>();
         }
 
+        public static IServiceCollection AddLoginAdapter(this IServiceCollection services)
+        {
+            return services.AddScoped<ILoginService, LoginService>();
+        }
+
     }
 }

@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -29,6 +30,7 @@ builder.Services.AddFamiliaAdapter();
 builder.Services.AddReclamacaoAdapter();
 builder.Services.AddSecretariaAdapter();
 builder.Services.AddServidorAdapter();
+builder.Services.AddLoginAdapter();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -41,9 +43,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidAudience = builder.Configuration["JWT:ValidAudience"],
-        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        ValidAudience = builder.Configuration.GetValue<string>("JWT:ValidAudience"),
+        ValidIssuer = builder.Configuration.GetValue<string>("JWT:ValidIssuer"),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("JWT:Secret")))
     };
 });
 builder.Services.AddAuthorization();

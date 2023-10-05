@@ -1,15 +1,10 @@
 ﻿using Core.Entities;
 using Core.Repository;
 using Core.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public class SecretariaService:ISecretariaService
+    public class SecretariaService : ISecretariaService
     {
         private readonly ISecretariaRepository _secretariaRepository;
 
@@ -18,15 +13,46 @@ namespace Core.Services
             _secretariaRepository = secretariaRepository;
         }
 
-        public async Task DeleteSecretariaAsync(Secretaria secretaria) => await _secretariaRepository.DeleteSecretariaAsync(secretaria);
-        public async Task SaveScretariaAsync(Secretaria secretaria)=> await _secretariaRepository.SaveSecretariaAsync(secretaria);
+        public async Task DeleteSecretariaAsync(Secretaria secretaria)
+        {
+            try
+            {
+                await _secretariaRepository.DeleteSecretariaAsync(secretaria);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task SaveScretariaAsync(Secretaria secretaria)
+        {
+            try
+            {
+                await _secretariaRepository.SaveSecretariaAsync(secretaria);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public async Task<Secretaria> GetSecretariaByIdAsync(int id)
         {
-            return await _secretariaRepository.GetSecretariaByIdAsync(id);
+            try
+            {
+                return await _secretariaRepository.GetSecretariaByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         public async Task<IEnumerable<Secretaria>> GetSecretariaAsync()
         {
-            return await _secretariaRepository.GetSecretarias();
+            try { return await _secretariaRepository.GetSecretarias(); }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

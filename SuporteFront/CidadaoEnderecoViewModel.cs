@@ -9,7 +9,7 @@ namespace SuporteFront
             Cidadao = new Cidadao();
             Endereco = new Endereco();
         }
-        public Cidadao Cidadao { get; set; }
-        public Endereco Endereco { get; set; }
+        public Cidadao? Cidadao { get; set; }
+        public Endereco? Endereco { get; set; }
     }
 }

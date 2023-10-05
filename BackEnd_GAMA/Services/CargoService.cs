@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public class CargoService:ICargoService
+    public class CargoService : ICargoService
     {
         private readonly ICargoRepository _cargoRepository;
 
@@ -20,20 +20,33 @@ namespace Core.Services
 
         public async Task<Cargo> GetCargoByIdAsync(int id)
         {
-            return await _cargoRepository.GetCargoByIdAsync(id);
+            try
+            {
+                return await _cargoRepository.GetCargoByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task SaveCargoAsync(Cargo cargo)
         {
-            await _cargoRepository.SaveCargoAsync(cargo);
+            try { await _cargoRepository.SaveCargoAsync(cargo); }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
         public async Task DeleteCargoAsync(Cargo cargo)
         {
-            await _cargoRepository.DeleteCargoAsync(cargo);
+            try { await _cargoRepository.DeleteCargoAsync(cargo); }
+            catch(Exception ex) { throw; }
         }
         public async Task<IEnumerable<Cargo>> GetAllCargosAsync()
         {
-           return await _cargoRepository.GetCargos();
+            try { return await _cargoRepository.GetCargos(); }
+            catch (Exception ex) { throw; }
         }
     }
 }

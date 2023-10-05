@@ -25,6 +25,15 @@
             Bairro = bairro;
         }
 
+        public DTOEndereco(int id, string logradouro, string cEP, string rua, string bairro)
+        {
+            Id = id;
+            Logradouro = logradouro;
+            CEP = cEP;
+            Rua = rua;
+            Bairro = bairro;
+        }
+
         public Endereco ConverterDTOParaModel(int id, string logradouro, string cep, string rua, string bairro)
         {
             return new Endereco

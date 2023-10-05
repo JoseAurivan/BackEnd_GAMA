@@ -11,6 +11,7 @@ namespace Core.Repository
     {
         Task<IEnumerable<Chamado>> GetChamados();
         Task<Chamado> GetChamadoByIdAsync(int id);
+        Task<IEnumerable<Chamado>> GetChamadosFromSecretaria(int secretariaId);
         Task SaveChamadooAsync(Chamado Chamado);
         Task DeleteChamadoAsync(Chamado Chamado);
     }

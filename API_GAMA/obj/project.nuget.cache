@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yc351zGDiKnDb6yVXEIu86rWiJvNxaXkMqLXQ8fN2K7jrax7yr3r4kd7Hcfys92y67LU1I1jQ4g6Lc4YLK9JCA==",
+  "dgSpecHash": "302osXMGNpxLezBFesv51TLhvU9R1lvzYF6+xUWphlHP1mP9HcT2yZOiFNpgG0SKLiS0MJb4zXuynJJ48gIwuQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
+  "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\API_GAMA\\API_GAMA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\auriv\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

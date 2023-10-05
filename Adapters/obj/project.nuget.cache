@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NZwf5YT84+7YyZWjgA4wklgMqrurWR/+uNu/xw1kA3fyXqpkRTwqIBE8d1WD0aKyxbijoxPL1sFW9BKfGKtfTQ==",
+  "dgSpecHash": "fsT/Z9OqPeBWtQz2xbzzD1XPKTehVAU1bDPBwrXXIbXSy+/Xu5bQfo/hPlFOaN6MwFjq826r3SX3LW7AiS7Luw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\auriv\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

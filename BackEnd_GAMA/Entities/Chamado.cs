@@ -14,7 +14,7 @@ namespace Core.Entities
 
         }
         public Chamado(StatusAtendimento statusAtendimento, string telefone, StatusSolicitacao statusSolicitacao,
-            Secretaria secretaria, string numeroProtocolo, string descricao, User user, Servidor atendidoPor, DateTime inicio)
+            Secretaria secretaria, string numeroProtocolo, string descricao, User user, Servidor atendidoPor, DateTimeOffset inicio)
         {
             StatusAtendimento = statusAtendimento;
             Telefone = telefone;
@@ -28,6 +28,20 @@ namespace Core.Entities
             Inicio = inicio;
 
 
+
+        }
+        public Chamado(StatusAtendimento statusAtendimento, string telefone, StatusSolicitacao statusSolicitacao,
+    Secretaria secretaria, string numeroProtocolo, string descricao, User user, DateTimeOffset inicio)
+        {
+            StatusAtendimento = statusAtendimento;
+            Telefone = telefone;
+            SecretariaDestino = secretaria;
+            StatusSolicitacao = statusSolicitacao;
+            SecretariaDestino = secretaria;
+            NumeroProtocolo = numeroProtocolo;
+            Descricao = descricao;
+            SolicitadoPor = user;
+            Inicio = inicio;
 
         }
 

@@ -15,13 +15,13 @@ namespace Infrastructure.DataBaseModels.Entities
             Id = id;    
         }
 
-        public DTOUser(string nome, string cPF, string senha, DTOEndereco? endereco, string email, string telefone)
+        public DTOUser(string nome, string cPF, string senha, int enderecoId, string email, string telefone)
         {
 
             Nome = nome;
             CPF = cPF;
             Senha = senha;
-            Endereco = endereco;
+            EnderecoId = enderecoId;
             Email = email;
             Telefone = telefone;
         }
@@ -36,13 +36,22 @@ namespace Infrastructure.DataBaseModels.Entities
             Telefone = telefone;
         }
 
-        public DTOUser(int id, string nome, string cPF, string senha, DTOEndereco? endereco, string email, string telefone)
+        public DTOUser(int id, string nome, string cPF, string senha, int enderecoId, string email, string telefone)
         {
             Id = id;
             Nome = nome;
             CPF = cPF;
             Senha = senha;
-            Endereco = endereco;
+            EnderecoId = enderecoId;
+            Email = email;
+            Telefone = telefone;
+        }
+        public DTOUser(int id, string nome, string cPF, string senha,  string email, string telefone)
+        {
+            Id = id;
+            Nome = nome;
+            CPF = cPF;
+            Senha = senha;
             Email = email;
             Telefone = telefone;
         }

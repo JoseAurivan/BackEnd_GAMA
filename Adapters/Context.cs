@@ -11,6 +11,9 @@ namespace Infrastructure
 {
     public class Context:DbContext
     {
+        public Context()
+        {
+        }
         public DbSet<DTOCidadao>? Cidadoes { get; set; }
         public DbSet<DTOServidor>? Servidores { get; set; }
         public DbSet<DTOChamado>? Chamados { get; set; }
@@ -34,7 +37,7 @@ namespace Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured) return;
-            optionsBuilder.UseNpgsql("Server=172.22.227.252;Port=5432;Database=gama_db;" +
+            optionsBuilder.UseNpgsql("Server=169.254.5.23;Port=5432;Database=gama_db;" +
                 "Username = admin;Password =240400;Timeout = 300;CommandTimeout = 300");
 
         }

@@ -87,7 +87,9 @@ namespace API_GAMA.Controllers
                 var endereco = await _enderecoService.GetEnderecoByIdAsync(id);
                 await _enderecoService.DeleteEnderecoAsync(endereco);
                 return Ok();
-            }catch(Exception ex) { return BadRequest(); }
+            }catch(Exception ex) {
+                return BadRequest(); 
+            }
         }
     }
 }

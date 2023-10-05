@@ -17,7 +17,7 @@ namespace Infrastructure.Configuration
             builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOServidor>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(x => x.Secretaria).WithMany(x => x.Servidores).HasForeignKey(x => x.SecretariaId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.Matricula);
-            builder.HasOne(x => x.Cargo).WithOne().HasForeignKey<DTOServidor>(x => x.CargoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Cargo).WithMany(x => x.Servidors).HasForeignKey(x => x.CargoId).OnDelete(DeleteBehavior.NoAction);
             
         }
     }

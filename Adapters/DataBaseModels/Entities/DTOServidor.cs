@@ -29,6 +29,13 @@ namespace Core.Entities
             CargoId = cargoId;
         }
 
+        public DTOServidor(string matricula, int secretariaId, int cargoId)
+        {
+            Matricula = matricula;
+            SecretariaId = secretariaId;
+            CargoId = cargoId;
+        }
+
         public int UserId { get; set; }
         public DTOUser? User { get; set; }
         public string Matricula { get;  set; }
@@ -39,12 +46,15 @@ namespace Core.Entities
 
         public Servidor ConverterDTOParaModel(DTOServidor servidor, Cargo cargo, Secretaria secretaria )
         {
-            return new Servidor();
+            return new Servidor(servidor.UserId,servidor.User.Nome,servidor.User.CPF
+                ,servidor.Matricula
+                ,servidor.User.Senha,servidor.User.Telefone
+                ,servidor.User.Email,secretaria,cargo);
         }
 
         public Servidor ConverterDTOParaModel(DTOServidor servidor, Cargo cargo)
         {
-            return new Servidor(servidor.Matricula,cargo);
+            return new Servidor(servidor.UserId, servidor.User.Nome, servidor.User.CPF, servidor.Matricula, servidor.User.Senha, servidor.User.Telefone, servidor.User.Email, cargo);
         }
 
         public Servidor ConverterDTOParaModel(DTOServidor servidor)

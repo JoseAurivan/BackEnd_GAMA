@@ -14,28 +14,47 @@ namespace Infrastructure
     {
         private Context context;
 
+        public ServidorRepositorySQL(Context context)
+        {
+            this.context = context;
+        }
+
         public async Task<Servidor> AuthenticateServidor(string matricula, string password)
         {
-            var servidorDTO = await context.Servidores
-            .Include(x => x.User)
-            .Where(x => x.Matricula == matricula && x.User.Senha == password)
-            .FirstOrDefaultAsync();
+            try
+            {
+                var servidorDTO = await context.Servidores
+                .Include(x => x.User)
+                .Where(x => x.Matricula == matricula && x.User.Senha == password)
+                .FirstOrDefaultAsync();
 
-            if (servidorDTO is not null)
-                return servidorDTO.ConverterDTOParaModel(servidorDTO);
+                if (servidorDTO is not null)
+                    return servidorDTO.ConverterDTOParaModel(servidorDTO);
 
-            return null;
+                return null;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task DeleteServidorAsync(Servidor Servidor)
         {
-            var servidorDTO = new DTOUser(Servidor.Id);
-            context.Users.Remove(servidorDTO);
-            await context.SaveChangesAsync();
+            try
+            {
+                var servidorDTO = new DTOUser(Servidor.Id);
+                context.Users.Remove(servidorDTO);
+                await context.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<Servidor> GetServidorByIdAsync(int id)
         {
+            try { 
             var servidorDTO = await context.Servidores
                 .Where(x => x.UserId == id)
                 .Include(x => x.User)
@@ -50,44 +69,82 @@ namespace Infrastructure
             var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
 
             return servidorDTO.ConverterDTOParaModel(servidorDTO, cargo, secretaria);
+            }catch(Exception ex) { throw; }
+        }
+
+        public async Task<Servidor> GetServidorByMatriculaAsync(string matricula)
+        {
+            try
+            {
+                var servidorDTO = await context.Servidores
+                    .Where(x => x.Matricula == matricula)
+                    .Include(x => x.User)
+                    .Include(x => x.Secretaria)
+                    .Include(x => x.Cargo)
+                    .FirstOrDefaultAsync();
+
+                var secretariaDTO = servidorDTO.Secretaria;
+                var cargoDTO = servidorDTO.Cargo;
+
+                var secretaria = secretariaDTO.ConverterDTOParaModel(secretariaDTO);
+                var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
+
+                return servidorDTO.ConverterDTOParaModel(servidorDTO, cargo, secretaria);
+            }
+            catch (Exception ex) { throw; }
         }
 
         public async Task<IEnumerable<Servidor>> GetServidors()
         {
-            var servidoresDTO = await context.Servidores
-                .Include(x => x.User)
-                .Include(x => x.Cargo)
-                .ToListAsync();
-
-            List<Servidor> servidores = new List<Servidor>();
-
-            foreach (var servidorDTO in servidoresDTO)
+            try
             {
-                var cargoDTO = servidorDTO.Cargo;
-                var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
+                var servidoresDTO = await context.Servidores
+                    .Include(x => x.User)
+                    .Include(x => x.Cargo)
+                    .ToListAsync();
 
-                servidores.Add(servidorDTO.ConverterDTOParaModel(servidorDTO, cargo));
+                List<Servidor> servidores = new List<Servidor>();
+
+                foreach (var servidorDTO in servidoresDTO)
+                {
+                    var cargoDTO = servidorDTO.Cargo;
+                    var cargo = cargoDTO.ConverterDTOParaModel(cargoDTO);
+
+                    servidores.Add(servidorDTO.ConverterDTOParaModel(servidorDTO, cargo));
+                }
+
+                return servidores;
             }
-
-            return servidores;
+            catch (Exception ex) { throw; }
         }
 
         public async Task SaveServidorAsync(Servidor Servidor)
         {
-            var userDTO = new DTOUser(Servidor.Id, Servidor.Nome, Servidor.CPF, Servidor.Senha, new DTOEndereco(), Servidor.Email, Servidor.Telefone);
-            var servidorDTO = new DTOServidor(Servidor.Id, Servidor.Matricula, Servidor.Secretaria.Id, Servidor.Cargo.Id);
-            if (servidorDTO.UserId == default)
+            try
             {
-                context.Users.Add(userDTO);
-                context.Servidores.Add(servidorDTO);
-            }
-            else
-            {
-                context.Entry(servidorDTO).State = EntityState.Modified;
-                context.Entry(userDTO).State = EntityState.Modified;
-            }
+                var userDTO = new DTOUser(Servidor.Nome, Servidor.CPF, Servidor.Senha, Servidor.Email, Servidor.Telefone);
+                var servidorDTO = new DTOServidor(Servidor.Matricula, Servidor.Secretaria.Id, Servidor.Cargo.Id);
+                if (Servidor.Id == default)
+                {
+                    context.Users.Add(userDTO);
+                    await context.SaveChangesAsync();
+                    servidorDTO.UserId = userDTO.Id;
+                    context.Servidores.Add(servidorDTO);
+                    await context.SaveChangesAsync();
 
-            await context.SaveChangesAsync();
+                }
+                else
+                {
+                    userDTO.Id = Servidor.Id;
+                    servidorDTO.UserId = userDTO.Id;
+                    context.Entry(userDTO).State = EntityState.Modified;
+                    context.Entry(servidorDTO).State = EntityState.Modified;
+
+                }
+
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex) { throw; }
         }
     }
 }

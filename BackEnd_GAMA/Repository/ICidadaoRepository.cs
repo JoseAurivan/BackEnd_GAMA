@@ -12,7 +12,8 @@ namespace Core.Repository
         Task DeleteCidadaoAsync(Cidadao cidadao);
         Task<Cidadao> AuthenticateCidadao(string cpf, string password);
         Task<Cidadao>? GetCidadaoByIdAsync(int id);
+        Task<Cidadao> GetCidadaoByCPFAsync(string cpf);
         Task<IEnumerable<Cidadao>> GetCidadaos();
-        Task SaveCidadaoAsync(Cidadao cidadao);
+        Task<int> SaveCidadaoAsync(Cidadao cidadao);
     }
 }

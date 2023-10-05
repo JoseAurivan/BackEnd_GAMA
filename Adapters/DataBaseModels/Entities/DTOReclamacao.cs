@@ -12,12 +12,19 @@
             Id = id;
         }
 
-        public DTOReclamacao(int id, int autorId, string texto, DateTime dataCriacao, int destinoId)
+        public DTOReclamacao(int id, int autorId, string texto, DateTimeOffset dataCriacao, int destinoId)
         {
             Id = id;
             AutorId = autorId;
             Texto = texto;
-            DataCriacao = dataCriacao;
+            DataCriacao = DateTime.SpecifyKind(dataCriacao.DateTime, DateTimeKind.Utc);
+            DestinoId = destinoId;
+        }
+        public DTOReclamacao( int autorId, string texto, DateTimeOffset dataCriacao, int destinoId)
+        {
+            AutorId = autorId;
+            Texto = texto;
+            DataCriacao = DateTime.SpecifyKind(dataCriacao.DateTime,DateTimeKind.Utc);
             DestinoId = destinoId;
         }
 
@@ -25,7 +32,7 @@
         public DTOCidadao? Autor { get;  set; }
         public int AutorId { get; set; }
         public string Texto { get;  set; }
-        public DateTime DataCriacao { get;  set; }
+        public DateTimeOffset DataCriacao { get;  set; }
         public DTOSecretaria? Destino { get;  set; }
         public int DestinoId { get; set; }
 

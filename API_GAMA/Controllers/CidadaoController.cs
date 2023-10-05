@@ -12,10 +12,12 @@ namespace API_GAMA.Controllers
     public class CidadaoController : ControllerBase
     {
         private readonly ICidadaoService _cidadaoService;
+        private readonly IEnderecoService _enderecoService;
 
-        public CidadaoController(ICidadaoService cidadaoService)
+        public CidadaoController(ICidadaoService cidadaoService, IEnderecoService enderecoService)
         {
             _cidadaoService = cidadaoService;
+            _enderecoService = enderecoService;
         }
 
         [HttpGet]
@@ -50,9 +52,12 @@ namespace API_GAMA.Controllers
         public async Task<IActionResult> Post(CidadaoEnderecoViewModel cidadaoEndereco)
         {
 
-           
+
             try
-            {               
+            {
+                var id = await _enderecoService.SaveEnderecoAsync(cidadaoEndereco.Endereco);
+                cidadaoEndereco.Cidadao.Endereco = new Endereco();
+                cidadaoEndereco.Cidadao.Endereco.Id = id;
                 await _cidadaoService.SaveCidadaoAsync(cidadaoEndereco.Cidadao);
                 return Ok();
             }
@@ -64,17 +69,15 @@ namespace API_GAMA.Controllers
 
         // PUT api/<CidadaoController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Cidadao cidadao)
+        public async Task<IActionResult> Put(Cidadao cidadao)
         {
             try
             {
-                //cidadao.Id = id;
-                await _cidadaoService.SaveCidadaoAsync(cidadao);
-                return Ok();
+                return Ok(await _cidadaoService.SaveCidadaoAsync(cidadao));
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                return Conflict(ex);
+                return BadRequest(0);
             }
         }
 
@@ -87,7 +90,8 @@ namespace API_GAMA.Controllers
                 var cidadao = await _cidadaoService.GetCidadaoById(id);
                 await _cidadaoService.DeleteCidadaoAsync(cidadao);
                 return Ok();
-            }catch(Exception ex) { return BadRequest(); }
+            }
+            catch (Exception ex) { return BadRequest(); }
         }
     }
 }

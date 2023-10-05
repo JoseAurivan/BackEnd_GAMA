@@ -12,7 +12,7 @@ namespace Core.Entities
         public string PISPASEP { get;  set; }
         public Cidadao()
         {
-
+            
         }
 
         public Reclamacao RealizarReclamacao(string reclamacao, Secretaria secretaria)
@@ -28,6 +28,17 @@ namespace Core.Entities
             Nome = nome;
             Email = email;
             Telefone = telefone;
+        }
+
+        public Cidadao(string pispasep, string cpf, int id, string nome, string email, string telefone, string senha)
+        {
+            PISPASEP = pispasep;
+            CPF = cpf;
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Telefone = telefone;
+            Senha = senha;
         }
 
         public Cidadao( string cpf, int id, string nome, string email, string telefone)

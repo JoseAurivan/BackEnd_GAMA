@@ -2,8 +2,7 @@
 using Core.Services;
 using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-
+using SuporteFront;
 
 namespace API_GAMA.Controllers
 {
@@ -12,10 +11,14 @@ namespace API_GAMA.Controllers
     public class ServidorController : ControllerBase
     {
         private readonly IServidorService _servidorService;
+        private readonly ISecretariaService _secretariaService;
+        private readonly ICargoService _cargoService;
 
-        public ServidorController(IServidorService servidorService)
+        public ServidorController(IServidorService servidorService, ISecretariaService secretariaService, ICargoService cargoService)
         {
             _servidorService = servidorService;
+            _secretariaService = secretariaService;
+            _cargoService = cargoService;
         }
 
         [HttpGet]
@@ -47,18 +50,36 @@ namespace API_GAMA.Controllers
             }
         }
 
-        // POST api/<ServidorController>
-        [HttpPost]
-        public async Task<IActionResult> Post(Servidor servidor)
+        [HttpGet("matricula/{matricula}")]
+        public async Task<IActionResult> GetServidorByMatricula(string matricula)
         {
             try
             {
+                
+                var servidor = await _servidorService.GetServidorByMatriucla(matricula);
+                return Ok(servidor.Secretaria);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+        }
+
+        // POST api/<ServidorController>
+        [HttpPost]
+        public async Task<IActionResult> Post(ServidorViewModel servidorVM)
+        {
+            try
+            {
+                var cargo = await _cargoService.GetCargoByIdAsync(servidorVM.CargoId);
+                var secretaria = await _secretariaService.GetSecretariaByIdAsync(servidorVM.SecretariaId);
+                Servidor servidor = new Servidor(servidorVM.Nome, servidorVM.CPF, servidorVM.Matricula, servidorVM.Senha, servidorVM.Telefone,servidorVM.Email, secretaria, cargo);
                 await _servidorService.SaveServidorAsync(servidor);
                 return Ok();
             }
             catch (Exception ex)
             {
-                return Conflict(ex);
+                return BadRequest(ex);
             }
         }
 
