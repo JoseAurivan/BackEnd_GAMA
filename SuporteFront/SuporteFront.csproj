@@ -1,9 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/JoseAurivan/BackEnd_GAMA</RepositoryUrl>
+    <Description>Pacote que oferece suporte suporte entre O Front end e a entrada no Core do projeto
+</Description>
   </PropertyGroup>
 
   <ItemGroup>
