@@ -9,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class CestaConfiguration : IEntityTypeConfiguration<CestaBasica>
+    internal class CestaConfiguration : IEntityTypeConfiguration<DTOCestaBasica>
     {
-        public void Configure(EntityTypeBuilder<CestaBasica> builder)
+        public void Configure(EntityTypeBuilder<DTOCestaBasica> builder)
         {
-            builder.Property(x => x.SituacaoDescricao);
-            builder.Property(x => x.Descricao);
-            builder.HasOne(x => x.SolicitadoPor).WithOne();
-            builder.HasOne(x => x.AtendidoPor).WithOne();
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<CestaBasica>(x => x.EnderecoId);
-            builder.Property(x => x.NumeroProtocolo);
-            builder.Property(x => x.Inicio);
-            builder.Property(x => x.Fim);
-            builder.Property(x => x.StatusSolicitacao);
+            builder.HasKey(x => x.SolcitacaoID);
+            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOCestaBasica>(x => x.SolcitacaoID).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<DTOCestaBasica>(x => x.EnderecoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Familia).WithMany(x => x.Cestas).HasForeignKey(x => x.FamiliaId).OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

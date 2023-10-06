@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class FamiliaController : ControllerBase
     {
@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                familia.Id = id;
+                //familia.Id = id;
                 await _familiaService.SaveFamiliaAsync(familia);
                 return Ok();
             }

@@ -13,12 +13,43 @@ namespace Core.Entities
         {
 
         }
+        public Chamado(StatusAtendimento statusAtendimento, string telefone, StatusSolicitacao statusSolicitacao,
+            Secretaria secretaria, string numeroProtocolo, string descricao, User user, Servidor atendidoPor, DateTimeOffset inicio)
+        {
+            StatusAtendimento = statusAtendimento;
+            Telefone = telefone;
+            SecretariaDestino = secretaria;
+            StatusSolicitacao = statusSolicitacao;
+            SecretariaDestino = secretaria;
+            NumeroProtocolo = numeroProtocolo;
+            Descricao = descricao;
+            SolicitadoPor = user;
+            AtendidoPor = atendidoPor;
+            Inicio = inicio;
+
+
+
+        }
+        public Chamado(StatusAtendimento statusAtendimento, string telefone, StatusSolicitacao statusSolicitacao,
+    Secretaria secretaria, string numeroProtocolo, string descricao, User user, DateTimeOffset inicio)
+        {
+            StatusAtendimento = statusAtendimento;
+            Telefone = telefone;
+            SecretariaDestino = secretaria;
+            StatusSolicitacao = statusSolicitacao;
+            SecretariaDestino = secretaria;
+            NumeroProtocolo = numeroProtocolo;
+            Descricao = descricao;
+            SolicitadoPor = user;
+            Inicio = inicio;
+
+        }
+
         public StatusAtendimento StatusAtendimento { get;  set; }
         public string Telefone { get;  set; }
+}
 
-        public int AtendenteId { get;  set; }
-        public int SolicitanteId { get;  set; }
-    }
+    
 
     public enum StatusAtendimento
     {

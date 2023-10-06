@@ -20,26 +20,57 @@ namespace Infrastructure
 
         public async Task DeleteEnderecoAsync(Endereco Endereco)
         {
-            context.Enderecos.Remove(Endereco);
-            await context.SaveChangesAsync();
+            try
+            {
+                DTOEndereco endereco = new DTOEndereco(Endereco.Id, Endereco.Logradouro, Endereco.CEP, Endereco.Rua, Endereco.Bairro);
+                context.Enderecos.Remove(endereco);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<Endereco> GetEnderecoByIdAsync(int id)
         {
-            return await context.Enderecos.FirstOrDefaultAsync(x => x.Id == id);
+            try { 
+            var enderecoDTO = await context.Enderecos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return enderecoDTO.ConverterDTOParaModel(enderecoDTO.Id, enderecoDTO.Logradouro, enderecoDTO.CEP, enderecoDTO.Rua, enderecoDTO.Bairro);
+            }catch(Exception ex) { throw; }
         }
 
         public async Task<IEnumerable<Endereco>> GetEnderecos()
         {
-            return await context.Enderecos.ToListAsync();
+            try
+            {
+                List<Endereco> enderecos = new List<Endereco>();
+                var DTOenderecos = await context.Enderecos.ToListAsync();
+                foreach (DTOEndereco enderecoDTO in DTOenderecos)
+                {
+                    enderecos.Add(enderecoDTO.ConverterDTOParaModel(enderecoDTO.Id, enderecoDTO.Logradouro, enderecoDTO.CEP, enderecoDTO.Rua, enderecoDTO.Bairro));
+                }
+                return enderecos;
+            }
+            catch (Exception ex) { throw; }
         }
 
-        public async Task SaveEnderecoAsync(Endereco Endereco)
+        public async Task<int> SaveEnderecoAsync(Endereco Endereco)
         {
-            if (Endereco.Id == default) await context.Enderecos.AddAsync(Endereco);
-            else context.Entry(Endereco).State = EntityState.Modified;
+            try
+            {
+                DTOEndereco enderecoDTO = new DTOEndereco(Endereco.Logradouro, Endereco.CEP, Endereco.Rua, Endereco.Bairro);
+                if (Endereco.Id == default) context.Enderecos.Add(enderecoDTO);
+                else
+                {
+                    enderecoDTO.Id = Endereco.Id;
+                    context.Entry(enderecoDTO).State = EntityState.Modified;
+                }
 
-            await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+                return enderecoDTO.Id;
+            }
+            catch (Exception ex) { throw; }
         }
     }
 }

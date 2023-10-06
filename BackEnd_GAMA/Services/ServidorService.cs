@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public class ServidorService:IServidorService
+    public class ServidorService : IServidorService
     {
         private readonly IServidorRepository _servidorRepository;
 
@@ -18,15 +18,47 @@ namespace Core.Services
             _servidorRepository = servidorRepository;
         }
 
-        public async Task DeleteServidorAsync(Servidor servidor) => await _servidorRepository.DeleteServidorAsync(servidor);
-        public async Task SaveServidorAsync(Servidor servidor) => await _servidorRepository.SaveServidorAsync(servidor);
+        public async Task DeleteServidorAsync(Servidor servidor)
+        {
+            try
+            {
+                await _servidorRepository.DeleteServidorAsync(servidor);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task SaveServidorAsync(Servidor servidor)
+        {
+            try { await _servidorRepository.SaveServidorAsync(servidor); } catch (Exception) { throw; }
+        }
         public async Task<Servidor> GetServidorById(int id)
         {
-            return await _servidorRepository.GetServidorByIdAsync(id);
+            try { return await _servidorRepository.GetServidorByIdAsync(id); }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public async Task<IEnumerable<Servidor>> GetServidors()
         {
-            return await _servidorRepository.GetServidors();
+            try { return await _servidorRepository.GetServidors(); }
+            catch(Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<Servidor> GetServidorByMatriucla(string matricula)
+        {
+            try
+            {
+                return await _servidorRepository.GetServidorByMatriculaAsync(matricula);
+            }catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

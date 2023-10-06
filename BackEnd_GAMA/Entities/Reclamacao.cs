@@ -7,10 +7,27 @@
 
         }
 
-        public int Id { get;  set; }
-        public int Autor { get;  set; }
+        public Reclamacao(Cidadao autor, string texto, DateTimeOffset dataCriacao, Secretaria destino)
+        {
+            Autor = autor;
+            Texto = texto;
+            DataCriacao = dataCriacao;
+            Destino = destino;
+        }
+
+        public Reclamacao(int id, Cidadao autor, string texto, DateTimeOffset dataCriacao, Secretaria destino)
+        {
+            Id = id;
+            Autor = autor;
+            Texto = texto;
+            DataCriacao = dataCriacao;
+            Destino = destino;
+        }
+
+        public int Id { get; set; }
+        public Cidadao Autor { get;  set; }
         public string Texto { get;  set; }
-        public DateTime DataCriacao { get;  set; }
-        public int Destino { get;  set; }
+        public DateTimeOffset DataCriacao { get;  set; }
+        public Secretaria Destino { get;  set; }
     }
 }

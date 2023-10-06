@@ -9,17 +9,14 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class CidadaoConfiguration : IEntityTypeConfiguration<Cidadao>
+    internal class CidadaoConfiguration : IEntityTypeConfiguration<DTOCidadao>
     {
-        public void Configure(EntityTypeBuilder<Cidadao> builder)
+        public void Configure(EntityTypeBuilder<DTOCidadao> builder)
         {
-            builder.Property(x => x.Nome);
-            builder.Property(x => x.CPF).IsRequired(true);
-            builder.Property(x => x.Senha);
+            builder.HasKey(x => x.UserId);
             builder.Property(x => x.PISPASEP);
-            builder.HasOne(x => x.Endereco).WithOne().HasForeignKey<Cidadao>(x => x.EnderecoId).IsRequired(false);
-            builder.Property(x => x.Telefone);
-            builder.Property(x => x.Email);
+            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOCidadao>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

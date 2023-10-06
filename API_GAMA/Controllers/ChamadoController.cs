@@ -1,21 +1,25 @@
 ﻿using Core.Entities;
+using Core.Entities.Abstract;
 using Core.Services;
 using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-
+using SuporteFront;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ChamadoController : ControllerBase
     {
         private readonly IChamadoService _chamadoService;
+        private readonly ISecretariaService _secretariaService;
+        private readonly IServidorService _servidorService;
 
-        public ChamadoController(IChamadoService chamadoService)
+        public ChamadoController(IChamadoService chamadoService, ISecretariaService secretariaService, IServidorService servidorService)
         {
             _chamadoService = chamadoService;
+            _secretariaService = secretariaService;
+            _servidorService = servidorService;
         }
 
         [HttpGet]
@@ -24,6 +28,19 @@ namespace API_GAMA.Controllers
             try
             {
                 var chamadoList = await _chamadoService.GetChamadosAsync();
+                return Ok(chamadoList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Ocorreu um erro ao listar os dados");
+            }
+        }
+        [HttpGet("secretaria/{id}")]
+        public async Task<IActionResult> GetChamadoFromSecretaria(int id)
+        {
+            try
+            {
+                var chamadoList = await _chamadoService.GetChamadosFromSecretaria(id);
                 return Ok(chamadoList);
             }
             catch (Exception ex)
@@ -49,16 +66,19 @@ namespace API_GAMA.Controllers
 
         // POST api/<ChamadoController>
         [HttpPost]
-        public async Task<IActionResult> Post( Chamado chamado)
+        public async Task<IActionResult> Post(ChamadoViewModel chamadoVM)
         {
             try
             {
+                Secretaria secretaria = await _secretariaService.GetSecretariaByIdAsync(chamadoVM.SecretariaId);
+                Servidor solicitadoPor = await _servidorService.GetServidorByMatriucla(chamadoVM.Matricula); 
+                Chamado chamado = new Chamado(chamadoVM.Atendimento,chamadoVM.Telefone,chamadoVM.Solicitacao,secretaria,new Guid().ToString(),chamadoVM.Descricao,solicitadoPor,chamadoVM.DataAbertura);
                 await _chamadoService.SaveChamadoAsync(chamado);
                 return Ok();
             }
             catch (Exception ex)
             {
-                return Conflict(ex);
+                return BadRequest(ex);
             }
         }
 
@@ -68,7 +88,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                chamado.Id = id;
+                //chamado.Id = id;
                 await _chamadoService.SaveChamadoAsync(chamado);
                 return Ok();
             }

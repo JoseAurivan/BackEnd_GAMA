@@ -10,7 +10,7 @@ namespace Core.Services.Interfaces
     public interface IEnderecoService
     {
         Task DeleteEnderecoAsync(Endereco endereco);
-        Task SaveEnderecoAsync(Endereco endereco);
+        Task<int> SaveEnderecoAsync(Endereco endereco);
         Task<Endereco> GetEnderecoByIdAsync(int id);
         Task<IEnumerable<Endereco>> GetEnderecosAsync();
     }

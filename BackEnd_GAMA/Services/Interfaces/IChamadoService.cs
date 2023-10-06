@@ -12,6 +12,8 @@ namespace Core.Services.Interfaces
         Task DeleteChamadoAsync(Chamado chamado);
         Task SaveChamadoAsync(Chamado chamado);
         Task<Chamado> GetChamadoByIdAsync(int id);
+
+        Task<IEnumerable<Chamado>> GetChamadosFromSecretaria(int secretariaId);
         Task<IEnumerable<Chamado>> GetChamadosAsync();
     }
 }

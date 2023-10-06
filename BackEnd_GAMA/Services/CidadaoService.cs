@@ -15,19 +15,59 @@ namespace Core.Services
 
         public async Task<Cidadao> GetCidadaoById(int id)
         {
-           return await _cidadaoRepository.GetCidadaoByIdAsync(id);
+            try
+            {
+                return await _cidadaoRepository.GetCidadaoByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task<Cidadao> GetCidadaoByCPFAsync(string cpf)
+        {
+            try
+            {
+                return await _cidadaoRepository.GetCidadaoByCPFAsync(cpf);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         public async Task DeleteCidadaoAsync(Cidadao cidadao)
         {
-            await _cidadaoRepository.DeleteCidadaoAsync(cidadao);
+            try
+            {
+                await _cidadaoRepository.DeleteCidadaoAsync(cidadao);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
-        public async Task SaveCidadaoAsync(Cidadao cidadao)
+        public async Task<int> SaveCidadaoAsync(Cidadao cidadao)
         {
-            await _cidadaoRepository.SaveCidadaoAsync(cidadao);
+            try
+            {
+                return await _cidadaoRepository.SaveCidadaoAsync(cidadao);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         public async Task<IEnumerable<Cidadao>> GetAllCidadao()
         {
-            return await _cidadaoRepository.GetCidadaos();
+            try
+            {
+                return await _cidadaoRepository.GetCidadaos();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
     }
 }

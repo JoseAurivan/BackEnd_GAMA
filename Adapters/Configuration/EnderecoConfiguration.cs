@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
+    internal class EnderecoConfiguration : IEntityTypeConfiguration<DTOEndereco>
     {
-        public void Configure(EntityTypeBuilder<Endereco> builder)
+        public void Configure(EntityTypeBuilder<DTOEndereco> builder)
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Rua);

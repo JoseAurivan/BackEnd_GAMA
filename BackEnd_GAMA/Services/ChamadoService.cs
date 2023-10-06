@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.Services
 {
-    public class ChamadoService:IChamadoService
+    public class ChamadoService : IChamadoService
     {
         private readonly IChamadoRepository _chamadoRepositoy;
 
@@ -18,15 +18,60 @@ namespace Core.Services
             _chamadoRepositoy = chamadoRepository;
         }
 
-        public async Task DeleteChamadoAsync(Chamado chamado) => await _chamadoRepositoy.DeleteChamadoAsync(chamado);
-        public async Task SaveChamadoAsync(Chamado chamado) => await _chamadoRepositoy.SaveChamadooAsync(chamado);
+        public async Task DeleteChamadoAsync(Chamado chamado)
+        {
+            try
+            {
+                await _chamadoRepositoy.DeleteChamadoAsync(chamado);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task SaveChamadoAsync(Chamado chamado)
+        {
+            try
+            {
+                await _chamadoRepositoy.SaveChamadooAsync(chamado);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public async Task<Chamado> GetChamadoByIdAsync(int id)
         {
-            return await _chamadoRepositoy.GetChamadoByIdAsync(id);
+            try
+            {
+                return await _chamadoRepositoy.GetChamadoByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task<IEnumerable<Chamado>> GetChamadosFromSecretaria(int secretariaId)
+        {
+            try
+            {
+                return await _chamadoRepositoy.GetChamadosFromSecretaria(secretariaId);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         public async Task<IEnumerable<Chamado>> GetChamadosAsync()
         {
-            return await _chamadoRepositoy.GetChamados();
+            try
+            {
+                return await _chamadoRepositoy.GetChamados();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 

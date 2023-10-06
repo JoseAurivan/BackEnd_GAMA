@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CargoController : ControllerBase
     {
@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                cargo.Id = id;
+                //cargo.Id = id;
                 await _cargoService.SaveCargoAsync(cargo);
                 return Ok();
             }

@@ -2,20 +2,23 @@
 using Core.Services;
 using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-
+using SuporteFront;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ReclamacaoController : ControllerBase
     {
         private readonly IReclamacaoService _reclamacaoService;
+        private readonly ICidadaoService _cidadaoService;
+        private readonly ISecretariaService _secretariaService;
 
-        public ReclamacaoController(IReclamacaoService reclamacaoService)
+        public ReclamacaoController(IReclamacaoService reclamacaoService,ISecretariaService secretariaService, ICidadaoService cidadaoService)
         {
             _reclamacaoService = reclamacaoService;
+            _cidadaoService = cidadaoService;
+            _secretariaService = secretariaService;
         }
 
         [HttpGet]
@@ -49,10 +52,13 @@ namespace API_GAMA.Controllers
 
         // POST api/<ReclamacaoController>
         [HttpPost]
-        public async Task<IActionResult> Post(Reclamacao reclamacao)
+        public async Task<IActionResult> Post(ReclamacaoViewModel reclamacaoVM)
         {
             try
             {
+                Secretaria secretaria = await _secretariaService.GetSecretariaByIdAsync(reclamacaoVM.SecretariaId);
+                Cidadao cidadao = await _cidadaoService.GetCidadaoByCPFAsync(reclamacaoVM.AutorCPF);
+                Reclamacao reclamacao = new Reclamacao(cidadao, reclamacaoVM.Texto, reclamacaoVM.DataCriacao, secretaria);
                 await _reclamacaoService.SaveReclamacaoAsync(reclamacao);
                 return Ok();
             }
@@ -68,7 +74,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                reclamacao.Id = id;
+                //reclamacao.Id = id;
                 await _reclamacaoService.SaveReclamacaoAsync(reclamacao);
                 return Ok();
             }

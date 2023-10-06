@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CestaBasicaController : ControllerBase
     {
@@ -68,7 +68,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                cesta.Id = id;
+                //cesta.Id = id;
                 await _cestaService.SaveCestaBasicaAsync(cesta);
                 return Ok();
             }

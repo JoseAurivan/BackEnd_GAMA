@@ -3,8 +3,8 @@ using System;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,102 +18,24 @@ namespace Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.HasSequence("SolicitacaoSequence");
-
-            modelBuilder.HasSequence("UserSequence");
-
-            modelBuilder.Entity("Core.Entities.Abstract.Solicitacao", b =>
+            modelBuilder.Entity("Core.Entities.DTOCargo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR [SolicitacaoSequence]");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("Id"));
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Fim")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Inicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NumeroProtocolo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SecretariaDestinoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StatusSolicitacao")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SecretariaDestinoId");
-
-                    b.ToTable((string)null);
-
-                    b.UseTpcMappingStrategy();
-                });
-
-            modelBuilder.Entity("Core.Entities.Abstract.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR [UserSequence]");
-
-                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("Id"));
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable((string)null);
-
-                    b.UseTpcMappingStrategy();
-                });
-
-            modelBuilder.Entity("Core.Entities.Cargo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Hierarquia")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<float>("Salario")
                         .HasColumnType("real");
@@ -123,45 +45,102 @@ namespace Infrastructure.Migrations
                     b.ToTable("Cargos");
                 });
 
-            modelBuilder.Entity("Core.Entities.Endereco", b =>
+            modelBuilder.Entity("Core.Entities.DTOCestaBasica", b =>
+                {
+                    b.Property<int>("SolcitacaoID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("FamiliaId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("SolcitacaoID");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
+
+                    b.HasIndex("FamiliaId");
+
+                    b.ToTable("CestaBasicas");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOChamado", b =>
+                {
+                    b.Property<int>("SolicitacaoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusAtendimento")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("SolicitacaoId");
+
+                    b.ToTable("Chamados");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOCidadao", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("FamiliaId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PISPASEP")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("FamiliaId");
+
+                    b.ToTable("Cidadoes");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOEndereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("CEP")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Rua")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("Core.Entities.Familia", b =>
+            modelBuilder.Entity("Core.Entities.DTOFamilia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -171,53 +150,59 @@ namespace Infrastructure.Migrations
                     b.ToTable("Familias");
                 });
 
-            modelBuilder.Entity("Core.Entities.Reclamacao", b =>
+            modelBuilder.Entity("Core.Entities.DTOReclamacao", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Autor")
-                        .HasColumnType("int");
+                    b.Property<int>("AutorId")
+                        .HasColumnType("integer");
 
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DataCriacao")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Destino")
-                        .HasColumnType("int");
+                    b.Property<int>("DestinoId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Texto")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AutorId")
+                        .IsUnique();
+
+                    b.HasIndex("DestinoId")
+                        .IsUnique();
 
                     b.ToTable("Reclamacoes");
                 });
 
-            modelBuilder.Entity("Core.Entities.Secretaria", b =>
+            modelBuilder.Entity("Core.Entities.DTOSecretaria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CNPJ")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -227,251 +212,297 @@ namespace Infrastructure.Migrations
                     b.ToTable("Secretarias");
                 });
 
-            modelBuilder.Entity("Core.Entities.CestaBasica", b =>
+            modelBuilder.Entity("Core.Entities.DTOServidor", b =>
                 {
-                    b.HasBaseType("Core.Entities.Abstract.Solicitacao");
-
-                    b.Property<int?>("AtendidoPorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FamiliaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SituacaoDescricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SolicitadoPorId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("AtendidoPorId");
-
-                    b.HasIndex("EnderecoId")
-                        .IsUnique()
-                        .HasFilter("[EnderecoId] IS NOT NULL");
-
-                    b.HasIndex("FamiliaId");
-
-                    b.HasIndex("SolicitadoPorId");
-
-                    b.ToTable("CestaBasicas");
-                });
-
-            modelBuilder.Entity("Core.Entities.Chamado", b =>
-                {
-                    b.HasBaseType("Core.Entities.Abstract.Solicitacao");
-
-                    b.Property<int>("AtendenteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SolicitanteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StatusAtendimento")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("AtendenteId")
-                        .IsUnique()
-                        .HasFilter("[AtendenteId] IS NOT NULL");
-
-                    b.HasIndex("SolicitanteId")
-                        .IsUnique()
-                        .HasFilter("[SolicitanteId] IS NOT NULL");
-
-                    b.ToTable("Chamados");
-                });
-
-            modelBuilder.Entity("Core.Entities.Cidadao", b =>
-                {
-                    b.HasBaseType("Core.Entities.Abstract.User");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FamiliaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PISPASEP")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("EnderecoId")
-                        .IsUnique()
-                        .HasFilter("[EnderecoId] IS NOT NULL");
-
-                    b.HasIndex("FamiliaId");
-
-                    b.ToTable("Cidadoes");
-                });
-
-            modelBuilder.Entity("Core.Entities.Servidor", b =>
-                {
-                    b.HasBaseType("Core.Entities.Abstract.User");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("CargoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EnderecoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Matricula")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("SecretariaId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    b.HasIndex("CargoId")
-                        .IsUnique()
-                        .HasFilter("[CargoId] IS NOT NULL");
+                    b.HasKey("UserId");
 
-                    b.HasIndex("EnderecoId");
+                    b.HasIndex("CargoId");
 
                     b.HasIndex("SecretariaId");
 
                     b.ToTable("Servidores");
                 });
 
-            modelBuilder.Entity("Core.Entities.Abstract.Solicitacao", b =>
+            modelBuilder.Entity("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", b =>
                 {
-                    b.HasOne("Core.Entities.Secretaria", "SecretariaDestino")
-                        .WithMany("Solicitacoes")
-                        .HasForeignKey("SecretariaDestinoId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AtendidoPorId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTimeOffset?>("Fim")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("Inicio")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NumeroProtocolo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("SecretariaId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SolicitadoPorId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusSolicitacao")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AtendidoPorId")
+                        .IsUnique();
+
+                    b.HasIndex("SecretariaId");
+
+                    b.HasIndex("SolicitadoPorId");
+
+                    b.ToTable("Solicitacoes");
+                });
+
+            modelBuilder.Entity("Infrastructure.DataBaseModels.Entities.DTOUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("EnderecoId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOCestaBasica", b =>
+                {
+                    b.HasOne("Core.Entities.DTOEndereco", "Endereco")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOCestaBasica", "EnderecoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("SecretariaDestino");
-                });
-
-            modelBuilder.Entity("Core.Entities.Familia", b =>
-                {
-                    b.HasOne("Core.Entities.Endereco", "Endereco")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.Familia", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("Core.Entities.Secretaria", b =>
-                {
-                    b.HasOne("Core.Entities.Endereco", "Endereco")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.Secretaria", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("Core.Entities.CestaBasica", b =>
-                {
-                    b.HasOne("Core.Entities.Servidor", "AtendidoPor")
-                        .WithMany()
-                        .HasForeignKey("AtendidoPorId");
-
-                    b.HasOne("Core.Entities.Endereco", "Endereco")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.CestaBasica", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Entities.Familia", "Familia")
+                    b.HasOne("Core.Entities.DTOFamilia", "Familia")
                         .WithMany("Cestas")
                         .HasForeignKey("FamiliaId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Abstract.User", "SolicitadoPor")
-                        .WithMany()
-                        .HasForeignKey("SolicitadoPorId");
-
-                    b.Navigation("AtendidoPor");
+                    b.HasOne("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "Solicitacao")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOCestaBasica", "SolcitacaoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Endereco");
 
                     b.Navigation("Familia");
 
-                    b.Navigation("SolicitadoPor");
+                    b.Navigation("Solicitacao");
                 });
 
-            modelBuilder.Entity("Core.Entities.Chamado", b =>
+            modelBuilder.Entity("Core.Entities.DTOChamado", b =>
                 {
-                    b.HasOne("Core.Entities.Servidor", "AtendidoPor")
+                    b.HasOne("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "Solicitacao")
                         .WithOne()
-                        .HasForeignKey("Core.Entities.Chamado", "AtendenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("Core.Entities.DTOChamado", "SolicitacaoId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Abstract.User", "SolicitadoPor")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.Chamado", "SolicitanteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AtendidoPor");
-
-                    b.Navigation("SolicitadoPor");
+                    b.Navigation("Solicitacao");
                 });
 
-            modelBuilder.Entity("Core.Entities.Cidadao", b =>
+            modelBuilder.Entity("Core.Entities.DTOCidadao", b =>
                 {
-                    b.HasOne("Core.Entities.Endereco", "Endereco")
-                        .WithOne()
-                        .HasForeignKey("Core.Entities.Cidadao", "EnderecoId");
-
-                    b.HasOne("Core.Entities.Familia", null)
+                    b.HasOne("Core.Entities.DTOFamilia", "Familia")
                         .WithMany("Membros")
-                        .HasForeignKey("FamiliaId");
+                        .HasForeignKey("FamiliaId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Infrastructure.DataBaseModels.Entities.DTOUser", "User")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOCidadao", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Familia");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOFamilia", b =>
+                {
+                    b.HasOne("Core.Entities.DTOEndereco", "Endereco")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOFamilia", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Endereco");
                 });
 
-            modelBuilder.Entity("Core.Entities.Servidor", b =>
+            modelBuilder.Entity("Core.Entities.DTOReclamacao", b =>
                 {
-                    b.HasOne("Core.Entities.Cargo", "Cargo")
+                    b.HasOne("Core.Entities.DTOCidadao", "Autor")
                         .WithOne()
-                        .HasForeignKey("Core.Entities.Servidor", "CargoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("Core.Entities.DTOReclamacao", "AutorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId");
+                    b.HasOne("Core.Entities.DTOSecretaria", "Destino")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOReclamacao", "DestinoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("Core.Entities.Secretaria", "Secretaria")
+                    b.Navigation("Autor");
+
+                    b.Navigation("Destino");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOSecretaria", b =>
+                {
+                    b.HasOne("Core.Entities.DTOEndereco", "Endereco")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOSecretaria", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOServidor", b =>
+                {
+                    b.HasOne("Core.Entities.DTOCargo", "Cargo")
+                        .WithMany("Servidors")
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.DTOSecretaria", "Secretaria")
                         .WithMany("Servidores")
                         .HasForeignKey("SecretariaId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Infrastructure.DataBaseModels.Entities.DTOUser", "User")
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.DTOServidor", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Cargo");
 
-                    b.Navigation("Endereco");
-
                     b.Navigation("Secretaria");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Core.Entities.Familia", b =>
+            modelBuilder.Entity("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", b =>
+                {
+                    b.HasOne("Core.Entities.DTOServidor", "AtendidoPor")
+                        .WithOne()
+                        .HasForeignKey("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "AtendidoPorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Core.Entities.DTOSecretaria", "SecretariaDestino")
+                        .WithMany("Solicitacoes")
+                        .HasForeignKey("SecretariaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Infrastructure.DataBaseModels.Entities.DTOUser", "SolicitadoPor")
+                        .WithMany("Solicitacao")
+                        .HasForeignKey("SolicitadoPorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AtendidoPor");
+
+                    b.Navigation("SecretariaDestino");
+
+                    b.Navigation("SolicitadoPor");
+                });
+
+            modelBuilder.Entity("Infrastructure.DataBaseModels.Entities.DTOUser", b =>
+                {
+                    b.HasOne("Core.Entities.DTOEndereco", "Endereco")
+                        .WithOne()
+                        .HasForeignKey("Infrastructure.DataBaseModels.Entities.DTOUser", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOCargo", b =>
+                {
+                    b.Navigation("Servidors");
+                });
+
+            modelBuilder.Entity("Core.Entities.DTOFamilia", b =>
                 {
                     b.Navigation("Cestas");
 
                     b.Navigation("Membros");
                 });
 
-            modelBuilder.Entity("Core.Entities.Secretaria", b =>
+            modelBuilder.Entity("Core.Entities.DTOSecretaria", b =>
                 {
                     b.Navigation("Servidores");
 
                     b.Navigation("Solicitacoes");
+                });
+
+            modelBuilder.Entity("Infrastructure.DataBaseModels.Entities.DTOUser", b =>
+                {
+                    b.Navigation("Solicitacao");
                 });
 #pragma warning restore 612, 618
         }

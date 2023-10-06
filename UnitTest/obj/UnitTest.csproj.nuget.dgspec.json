@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj": {}
+    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
+    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\obj\\",
+        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,8 +34,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
-                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
+              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
+                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
               }
             }
           }
@@ -50,6 +50,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EntityFramework6.Npgsql": {
+              "target": "Package",
+              "version": "[6.4.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -63,6 +67,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
             }
           },
           "imports": [
@@ -81,18 +89,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
+    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
+        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
         "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\obj\\",
+        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -142,18 +150,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj": {
+    "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj",
+        "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj",
         "projectName": "UnitTest",
-        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj",
+        "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj",
         "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\obj\\",
+        "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -176,11 +184,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj"
+              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj"
               },
-              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
-                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
+              "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
+                "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj"
               }
             }
           }
@@ -232,7 +240,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

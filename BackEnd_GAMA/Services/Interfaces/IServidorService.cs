@@ -12,6 +12,7 @@ namespace Core.Services.Interfaces
         Task DeleteServidorAsync(Servidor servidor);
         Task SaveServidorAsync(Servidor servidor);
         Task<Servidor> GetServidorById(int id);
+        Task<Servidor> GetServidorByMatriucla(string matricula);
         Task<IEnumerable<Servidor>> GetServidors();
     }
 }

@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configuration
 {
-    internal class ServidorConfiguration : IEntityTypeConfiguration<Servidor>
+    internal class ServidorConfiguration : IEntityTypeConfiguration<DTOServidor>
     {
-        public void Configure(EntityTypeBuilder<Servidor> builder)
+        public void Configure(EntityTypeBuilder<DTOServidor> builder)
         {
-            builder.Property(x => x.Nome);
-            builder.Property(x => x.CPF).IsRequired();
-            builder.Property(x => x.Senha);
-            builder.HasOne(x => x.Endereco);
-            builder.Property(x => x.Telefone);
-            builder.Property(x => x.Email);
+            builder.HasKey(x => x.UserId);
+            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOServidor>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Secretaria).WithMany(x => x.Servidores).HasForeignKey(x => x.SecretariaId).OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.Matricula);
-            builder.HasOne(x => x.Cargo).WithOne().HasForeignKey<Servidor>(x => x.CargoId);
+            builder.HasOne(x => x.Cargo).WithMany(x => x.Servidors).HasForeignKey(x => x.CargoId).OnDelete(DeleteBehavior.NoAction);
             
         }
     }

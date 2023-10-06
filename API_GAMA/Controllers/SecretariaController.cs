@@ -2,20 +2,21 @@
 using Core.Services;
 using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
-
+using SuporteFront;
 
 namespace API_GAMA.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SecretariaController : ControllerBase
     {
         private readonly ISecretariaService _secretariaService;
+        private readonly IEnderecoService _enderecoService;
 
-        public SecretariaController(ISecretariaService secretariaService)
+        public SecretariaController(ISecretariaService secretariaService, IEnderecoService enderecoService)
         {
             _secretariaService = secretariaService;
+            _enderecoService = enderecoService;
         }
 
         [HttpGet]
@@ -49,10 +50,15 @@ namespace API_GAMA.Controllers
 
         // POST api/<SecretariaController>
         [HttpPost]
-        public async Task<IActionResult> Post(Secretaria secretaria)
+        public async Task<IActionResult> Post(SecretariaEnderecoViewModel secretariaVM)
         {
             try
             {
+                var endereco = secretariaVM.Endereco;
+                endereco.Id = await _enderecoService.SaveEnderecoAsync(endereco);
+                var secretaria = secretariaVM.Secretaria;
+                secretaria.Endereco = endereco;
+                secretaria.EnderecoId = endereco.Id;
                 await _secretariaService.SaveScretariaAsync(secretaria);
                 return Ok();
             }
@@ -68,7 +74,7 @@ namespace API_GAMA.Controllers
         {
             try
             {
-                secretaria.Id = id;
+                //secretaria.Id = id;
                 await _secretariaService.SaveScretariaAsync(secretaria);
                 return Ok();
             }

@@ -11,7 +11,7 @@ namespace Core.Repository
     {
         Task<IEnumerable<Endereco>> GetEnderecos();
         Task<Endereco> GetEnderecoByIdAsync(int id);
-        Task SaveEnderecoAsync(Endereco Endereco);
+        Task<int> SaveEnderecoAsync(Endereco Endereco);
         Task DeleteEnderecoAsync(Endereco Endereco);
 
     }
