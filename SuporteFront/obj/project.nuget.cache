@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qU+grS3x3zD4+uDjG/GGRSaiKXRjD3TgZj1m+Z0stC1EQxl8gD2qcZlwU3BLOoHlEoFIF3ik6rxi38Cs877FTg==",
+  "dgSpecHash": "bBHjwnqgFzUVBHK09hLnm42avejpZuzQFeJ3da5T4u5m2mNnzaQrZbLtZpZLfnDS6CmoXoaB4HUC1wAzOCQeGg==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\auriv\\.nuget\\packages\\jose.gama.core\\1.0.2\\jose.gama.core.1.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

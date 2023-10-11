@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SuporteFront</id>
+    <version>1.0.1</version>
+    <authors>SuporteFront</authors>
+    <description>Pacote que oferece suporte suporte entre O Front end e a entrada no Core do projeto</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Core" version="1.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\SuporteFront\bin\Debug\net6.0\SuporteFront.dll" target="lib\net6.0\SuporteFront.dll" />
+  </files>
+</package>

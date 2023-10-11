@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BackEnd_GAMA\Core.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\BackEnd_GAMA\Core.csproj" />
   </ItemGroup>
 
 </Project>

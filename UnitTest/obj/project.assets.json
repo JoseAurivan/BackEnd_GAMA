@@ -2787,22 +2787,12 @@
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Core.dll": {}
-        }
-      },
       "Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Core": "1.0.0",
           "EntityFramework6.Npgsql": "6.4.3",
+          "JOSE.GAMA.CORE": "1.0.2",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
@@ -2812,6 +2802,16 @@
         },
         "runtime": {
           "bin/placeholder/Infrastructure.dll": {}
+        }
+      },
+      "JOSE.GAMA.CORE/1.0.2": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
         }
       }
     }
@@ -8918,21 +8918,21 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Core/1.0.0": {
-      "type": "project",
-      "path": "../BackEnd_GAMA/Core.csproj",
-      "msbuildProject": "../BackEnd_GAMA/Core.csproj"
-    },
     "Infrastructure/1.0.0": {
       "type": "project",
       "path": "../Adapters/Infrastructure.csproj",
       "msbuildProject": "../Adapters/Infrastructure.csproj"
+    },
+    "JOSE.GAMA.CORE/1.0.2": {
+      "type": "project",
+      "path": "../BackEnd_GAMA/Core.csproj",
+      "msbuildProject": "../BackEnd_GAMA/Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Core >= 1.0.0",
       "Infrastructure >= 1.0.0",
+      "JOSE.GAMA.CORE >= 1.0.2",
       "Microsoft.NET.Test.Sdk >= 17.3.2",
       "coverlet.collector >= 3.1.2",
       "xunit >= 2.4.2",
@@ -8967,8 +8967,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/JoseAurivan/index.json": {}
       },
       "frameworks": {
         "net6.0": {

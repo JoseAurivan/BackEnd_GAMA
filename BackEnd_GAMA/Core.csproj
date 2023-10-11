@@ -4,8 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RepositoryUrl>https://github.com/JoseAurivan/BackEnd_GAMA</RepositoryUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Version>1.0.2</Version>
+	<PackageId>JOSE.GAMA.CORE</PackageId>
     <Description>Esse é o core da aplicação com todas as classes de domínio</Description>
   </PropertyGroup>
 

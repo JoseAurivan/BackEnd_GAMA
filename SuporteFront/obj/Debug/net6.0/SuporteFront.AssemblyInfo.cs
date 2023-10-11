@@ -14,13 +14,12 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SuporteFront")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Pacote que oferece suporte suporte entre O Front end e a entrada no Core do proje" +
-    "to\r\n")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+    "to")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.2.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.2")]
 [assembly: System.Reflection.AssemblyProductAttribute("SuporteFront")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SuporteFront")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/JoseAurivan/BackEnd_GAMA")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.2.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

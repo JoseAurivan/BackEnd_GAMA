@@ -94,12 +94,6 @@ C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\Back
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.csproj.AssemblyReference.cache
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.AssemblyInfoInputs.cache
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.AssemblyInfo.cs
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.csproj.CoreCompileInputs.cache
-C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\appsettings.json
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\API_GAMA.exe
@@ -178,6 +172,13 @@ C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoInt
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\Infrastructure.pdb
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\Core.pdb
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\bin\Debug\net6.0\SuporteFront.pdb
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.csproj.AssemblyReference.cache
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.AssemblyInfoInputs.cache
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.AssemblyInfo.cs
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.csproj.CoreCompileInputs.cache
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\API_GAMA.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\staticwebassets\msbuild.API_GAMA.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\staticwebassets\msbuild.build.API_GAMA.props
 C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\API_GAMA\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.API_GAMA.props
