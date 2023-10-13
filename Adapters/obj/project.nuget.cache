@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "avSw4JkhtwbKKfKPfmgdEEeTbE7f3GA9ZGe/u74fbuFtQ8zlSXZxLhVa2FhS+qr7tR79skXMDZ9i+mES9y1Nmg==",
+  "dgSpecHash": "ZuZxP4iG2LuEmH/NCFoVIV2g/gzUuXWuO36PdBeucVJuxd8LiwW30T79pwsdKr634Fu18wXxQok6cYPKSo5C8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\Adapters\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -80,7 +80,8 @@
     "C:\\Users\\auriv\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\auriv\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+    "C:\\Users\\auriv\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\jose.gama.core\\1.0.2\\jose.gama.core.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }
