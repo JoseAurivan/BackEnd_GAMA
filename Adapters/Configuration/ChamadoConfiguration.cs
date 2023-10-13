@@ -14,7 +14,7 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<DTOChamado> builder)
         {
             builder.HasKey(x => x.SolicitacaoId);
-            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOChamado>(x => x.SolicitacaoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Solicitacao).WithOne().HasForeignKey<DTOChamado>(x => x.SolicitacaoId).OnDelete(DeleteBehavior.ClientCascade);
             builder.Property(x => x.StatusAtendimento);
             builder.Property(x => x.Telefone);
         }

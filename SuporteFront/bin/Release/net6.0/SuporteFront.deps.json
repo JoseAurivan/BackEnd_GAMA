@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SuporteFront/1.0.2": {
+        "dependencies": {
+          "JOSE.GAMA.CORE": "1.0.2",
+          "Core": "1.0.2.0"
+        },
+        "runtime": {
+          "SuporteFront.dll": {}
+        }
+      },
+      "JOSE.GAMA.CORE/1.0.2": {
+        "runtime": {
+          "Core.dll": {}
+        }
+      },
+      "Core/1.0.2.0": {
+        "runtime": {
+          "Core.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SuporteFront/1.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JOSE.GAMA.CORE/1.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core/1.0.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
