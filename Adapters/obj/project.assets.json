@@ -1305,14 +1305,14 @@
           }
         }
       },
-      "Core/1.0.0": {
+      "JOSE.GAMA.CORE/1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
         }
       }
     }
@@ -3999,7 +3999,7 @@
         "version.txt"
       ]
     },
-    "Core/1.0.0": {
+    "JOSE.GAMA.CORE/1.0.2": {
       "type": "project",
       "path": "../BackEnd_GAMA/Core.csproj",
       "msbuildProject": "../BackEnd_GAMA/Core.csproj"
@@ -4007,8 +4007,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Core >= 1.0.0",
       "EntityFramework6.Npgsql >= 6.4.3",
+      "JOSE.GAMA.CORE >= 1.0.2",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
@@ -4043,7 +4043,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

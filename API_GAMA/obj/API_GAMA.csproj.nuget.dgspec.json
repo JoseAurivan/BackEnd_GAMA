@@ -27,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -116,7 +115,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -182,10 +180,10 @@
       }
     },
     "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
-        "projectName": "Core",
+        "projectName": "JOSE.GAMA.CORE",
         "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\Core.csproj",
         "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\BackEnd_GAMA\\obj\\",
@@ -204,7 +202,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -243,10 +240,10 @@
       }
     },
     "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj",
-        "projectName": "SuporteFront",
+        "projectName": "JOSE.GAMA.SUPPORT.FRONT",
         "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj",
         "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\obj\\",
@@ -265,7 +262,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

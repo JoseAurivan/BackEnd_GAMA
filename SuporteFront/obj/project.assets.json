@@ -2,20 +2,20 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Core/1.0.0": {
+      "JOSE.GAMA.CORE/1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Core/1.0.0": {
+    "JOSE.GAMA.CORE/1.0.2": {
       "type": "project",
       "path": "../BackEnd_GAMA/Core.csproj",
       "msbuildProject": "../BackEnd_GAMA/Core.csproj"
@@ -23,7 +23,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Core >= 1.0.0"
+      "JOSE.GAMA.CORE >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -32,10 +32,10 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj",
-      "projectName": "SuporteFront",
+      "projectName": "JOSE.GAMA.SUPPORT.FRONT",
       "projectPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\SuporteFront.csproj",
       "packagesPath": "C:\\Users\\auriv\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\SuporteFront\\obj\\",
@@ -54,7 +54,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

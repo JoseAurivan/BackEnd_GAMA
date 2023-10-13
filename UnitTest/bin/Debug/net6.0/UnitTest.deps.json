@@ -8,12 +8,13 @@
     ".NETCoreApp,Version=v6.0": {
       "UnitTest/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "Infrastructure": "1.0.0",
+          "JOSE.GAMA.CORE": "1.0.2",
           "Microsoft.NET.Test.Sdk": "17.3.2",
           "coverlet.collector": "3.1.2",
           "xunit": "2.4.2",
-          "xunit.runner.visualstudio": "2.4.5"
+          "xunit.runner.visualstudio": "2.4.5",
+          "Core": "1.0.2.0"
         },
         "runtime": {
           "UnitTest.dll": {}
@@ -1691,21 +1692,29 @@
         }
       },
       "xunit.runner.visualstudio/2.4.5": {},
-      "Core/1.0.0": {
-        "runtime": {
-          "Core.dll": {}
-        }
-      },
       "Infrastructure/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "EntityFramework6.Npgsql": "6.4.3",
+          "JOSE.GAMA.CORE": "1.0.2",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
         },
         "runtime": {
           "Infrastructure.dll": {}
+        }
+      },
+      "JOSE.GAMA.CORE/1.0.2": {
+        "runtime": {
+          "Core.dll": {}
+        }
+      },
+      "Core/1.0.2.0": {
+        "runtime": {
+          "Core.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
         }
       }
     }
@@ -2766,13 +2775,18 @@
       "path": "xunit.runner.visualstudio/2.4.5",
       "hashPath": "xunit.runner.visualstudio.2.4.5.nupkg.sha512"
     },
-    "Core/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Infrastructure/1.0.0": {
+    "JOSE.GAMA.CORE/1.0.2": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core/1.0.2.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

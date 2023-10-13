@@ -1338,22 +1338,12 @@
           }
         }
       },
-      "Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Core.dll": {}
-        }
-      },
       "Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Core": "1.0.0",
           "EntityFramework6.Npgsql": "6.4.3",
+          "JOSE.GAMA.CORE": "1.0.2",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
@@ -1365,17 +1355,27 @@
           "bin/placeholder/Infrastructure.dll": {}
         }
       },
-      "SuporteFront/1.0.0": {
+      "JOSE.GAMA.CORE/1.0.2": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JOSE.GAMA.CORE.dll": {}
+        }
+      },
+      "JOSE.GAMA.SUPPORT.FRONT/1.0.2": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Core": "1.0.0"
+          "JOSE.GAMA.CORE": "1.0.2"
         },
         "compile": {
-          "bin/placeholder/SuporteFront.dll": {}
+          "bin/placeholder/JOSE.GAMA.SUPPORT.FRONT.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SuporteFront.dll": {}
+          "bin/placeholder/JOSE.GAMA.SUPPORT.FRONT.dll": {}
         }
       }
     }
@@ -4102,17 +4102,17 @@
         "version.txt"
       ]
     },
-    "Core/1.0.0": {
-      "type": "project",
-      "path": "../BackEnd_GAMA/Core.csproj",
-      "msbuildProject": "../BackEnd_GAMA/Core.csproj"
-    },
     "Infrastructure/1.0.0": {
       "type": "project",
       "path": "../Adapters/Infrastructure.csproj",
       "msbuildProject": "../Adapters/Infrastructure.csproj"
     },
-    "SuporteFront/1.0.0": {
+    "JOSE.GAMA.CORE/1.0.2": {
+      "type": "project",
+      "path": "../BackEnd_GAMA/Core.csproj",
+      "msbuildProject": "../BackEnd_GAMA/Core.csproj"
+    },
+    "JOSE.GAMA.SUPPORT.FRONT/1.0.2": {
       "type": "project",
       "path": "../SuporteFront/SuporteFront.csproj",
       "msbuildProject": "../SuporteFront/SuporteFront.csproj"
@@ -4120,11 +4120,11 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Core >= 1.0.0",
       "Infrastructure >= 1.0.0",
+      "JOSE.GAMA.CORE >= 1.0.2",
+      "JOSE.GAMA.SUPPORT.FRONT >= 1.0.2",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.22",
       "Newtonsoft.Json >= 13.0.3",
-      "SuporteFront >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -4156,7 +4156,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\auriv\\source\\repos\\AvaliacaoDev\\AvaliacaoDev": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

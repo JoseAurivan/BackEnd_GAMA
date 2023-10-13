@@ -4,11 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/JoseAurivan/BackEnd_GAMA</RepositoryUrl>
-    <Description>Pacote que oferece suporte suporte entre O Front end e a entrada no Core do projeto
-</Description>
+	<PackageId>JOSE.GAMA.SUPPORT.FRONT</PackageId>
+	<Version>1.0.2</Version>
+    <Description>Pacote que oferece suporte suporte entre O Front end e a entrada no Core do projeto</Description>
   </PropertyGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\BackEnd_GAMA\Core.csproj" />

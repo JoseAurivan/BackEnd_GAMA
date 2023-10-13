@@ -8,12 +8,13 @@
     ".NETCoreApp,Version=v6.0": {
       "Infrastructure/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "EntityFramework6.Npgsql": "6.4.3",
+          "JOSE.GAMA.CORE": "1.0.2",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.Design": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "Core": "1.0.2.0"
         },
         "runtime": {
           "Infrastructure.dll": {}
@@ -816,9 +817,17 @@
           }
         }
       },
-      "Core/1.0.0": {
+      "JOSE.GAMA.CORE/1.0.2": {
         "runtime": {
           "Core.dll": {}
+        }
+      },
+      "Core/1.0.2.0": {
+        "runtime": {
+          "Core.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
         }
       }
     }
@@ -1368,8 +1377,13 @@
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
-    "Core/1.0.0": {
+    "JOSE.GAMA.CORE/1.0.2": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core/1.0.2.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

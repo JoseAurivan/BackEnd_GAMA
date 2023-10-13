@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>JOSE.GAMA.CORE</id>
+    <version>1.0.2</version>
+    <authors>Core</authors>
+    <description>Esse é o core da aplicação com todas as classes de domínio</description>
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\BackEnd_GAMA\bin\Debug\net6.0\Core.dll" target="lib\net6.0\Core.dll" />
+  </files>
+</package>

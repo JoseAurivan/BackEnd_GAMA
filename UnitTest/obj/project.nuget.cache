@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QhE+Qv6AmHAict+fgPTpfh+eVzTCtPosUwkG6AFr+ZIfMjka8FGhDy8BJ/alDewDrOYSjKnV+GssoP4lKuYy0w==",
+  "dgSpecHash": "hVIc1kxzZHesgSdE3m86lEpykr576j9xCxTlyMXH6dP3OZu2f8ExXuayQpKqwav1pu8tc2rJtI2nYIaUZPMFYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\BackEnd_GAMA\\UnitTest\\UnitTest.csproj",
   "expectedPackageFiles": [
@@ -153,7 +153,8 @@
     "C:\\Users\\auriv\\.nuget\\packages\\xunit.core\\2.4.2\\xunit.core.2.4.2.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512",
-    "C:\\Users\\auriv\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.5\\xunit.runner.visualstudio.2.4.5.nupkg.sha512"
+    "C:\\Users\\auriv\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.5\\xunit.runner.visualstudio.2.4.5.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\jose.gama.core\\1.0.2\\jose.gama.core.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }
