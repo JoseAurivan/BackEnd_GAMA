@@ -63,8 +63,8 @@ namespace API_GAMA.Controllers
         }
 
         // PUT api/<EnderecoController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id,  Endereco endereco)
+        [HttpPut]
+        public async Task<IActionResult> Put(Endereco endereco)
         {
             try
             {

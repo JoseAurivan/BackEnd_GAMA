@@ -43,13 +43,12 @@ namespace Infrastructure
         {
             try
             {
-                var servidorDTO = new DTOUser(Servidor.Id);
-                context.Users.Remove(servidorDTO);
+                var userDTO = await context.Users.FirstOrDefaultAsync(x => x.Id == Servidor.Id);
+
+                context.Users.Remove(userDTO);
                 await context.SaveChangesAsync();
-            }catch(Exception ex)
-            {
-                throw;
             }
+            catch (Exception ex) { throw; }
         }
 
         public async Task<Servidor> GetServidorByIdAsync(int id)
