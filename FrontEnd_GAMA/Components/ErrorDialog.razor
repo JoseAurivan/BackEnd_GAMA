@@ -1,0 +1,28 @@
+﻿@page "/errorDialog"
+
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Erro !!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Algo deu errado :(</p>
+                <p>@Message</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" @onclick="(async () => await ModalInstance.CancelAsync())" class="btn btn-primary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Message { get; set; }
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+}

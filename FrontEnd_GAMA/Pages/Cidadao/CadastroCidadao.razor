@@ -1,0 +1,18 @@
+﻿@page "/cadastro/cidadao"
+@inject HttpClient http
+@inject NavigationManager NavigationManager
+@using Core.Entities
+@using System.Text.Json.Nodes;
+@using System.Text.Json;
+@using FrontEnd_GAMA.Components;
+@using SuporteFront;
+
+<h4>Cadastrar Cidadao</h4>
+
+<CidadaoCadastroComponent cidadaoEnderecoViewModel="@cidadaoEnderecoViewModel">
+
+</CidadaoCadastroComponent>
+
+@code {
+    public CidadaoEnderecoViewModel cidadaoEnderecoViewModel = new CidadaoEnderecoViewModel();
+}
