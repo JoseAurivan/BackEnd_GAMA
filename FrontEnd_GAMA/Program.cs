@@ -14,13 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<HttpClient>(sp => new HttpClient {BaseAddress = new Uri("http://localhost:5042/api/") });
+builder.Services.AddScoped<HttpClient>(sp => new HttpClient {BaseAddress = new Uri("http://backend/api/") });
 builder.Services.AddBlazoredModal();
 builder.Services.AddSingleton<AdmOperationEntity>();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddScoped<AuthenticationStateProvider, AuthProvider>();
 builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddAuthenticationCore();
 builder.Services.AddBlazoredToast();
 
 
@@ -33,8 +31,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 

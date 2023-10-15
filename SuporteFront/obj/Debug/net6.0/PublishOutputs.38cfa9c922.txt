@@ -1,0 +1,5 @@
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\SuporteFront.dll
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\SuporteFront.deps.json
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\SuporteFront.pdb
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\Core.dll
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\Core.pdb
