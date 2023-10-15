@@ -14,10 +14,10 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<DTOReclamacao> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.Destino).WithOne().HasForeignKey<DTOReclamacao>(x => x.DestinoId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Destino).WithOne().HasForeignKey<DTOReclamacao>(x => x.DestinoId).OnDelete(DeleteBehavior.ClientCascade);
             builder.Property(x => x.Texto);
             builder.Property(x => x.DataCriacao);
-            builder.HasOne(x => x.Autor).WithOne().HasForeignKey<DTOReclamacao>(x => x.AutorId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Autor).WithOne().HasForeignKey<DTOReclamacao>(x => x.AutorId).OnDelete(DeleteBehavior.ClientCascade);
             
         }
     }

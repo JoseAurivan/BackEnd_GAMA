@@ -1,0 +1,3 @@
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\Core.dll
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\Core.deps.json
+C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\BackEnd_GAMA\out\Core.pdb

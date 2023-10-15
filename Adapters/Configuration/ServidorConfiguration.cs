@@ -14,10 +14,10 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<DTOServidor> builder)
         {
             builder.HasKey(x => x.UserId);
-            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOServidor>(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
-            builder.HasOne(x => x.Secretaria).WithMany(x => x.Servidores).HasForeignKey(x => x.SecretariaId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.User).WithOne().HasForeignKey<DTOServidor>(x => x.UserId).OnDelete(DeleteBehavior.ClientCascade);
+            builder.HasOne(x => x.Secretaria).WithMany(x => x.Servidores).HasForeignKey(x => x.SecretariaId).OnDelete(DeleteBehavior.ClientCascade);
             builder.Property(x => x.Matricula);
-            builder.HasOne(x => x.Cargo).WithMany(x => x.Servidors).HasForeignKey(x => x.CargoId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.Cargo).WithMany(x => x.Servidors).HasForeignKey(x => x.CargoId).OnDelete(DeleteBehavior.ClientCascade);
             
         }
     }

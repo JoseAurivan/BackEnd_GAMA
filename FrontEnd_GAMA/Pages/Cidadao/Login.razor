@@ -1,0 +1,86 @@
+﻿@page "/login/cidadao"
+@using Core.Entities
+@using SuporteFront;
+@inject NavigationManager NavigationManager
+@inject HttpClient http;
+@inject ILocalStorageService localStorage;
+@inject AuthenticationStateProvider auth;
+@inject IToastService toast
+<h3>Login</h3>
+<PageTitle>Login</PageTitle>
+
+<EditForm Model="@cidadao" OnSubmit="@PainelCidadao">
+    <div class="form-goup">
+        <label for="cpf" class="sr-only">CPF:</label>
+        <InputText id="cpf" class="form-control" placeholder="00000000000 - Apenas numeros" @bind-Value="cidadao.Cpf" required />
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Senha:</label>
+        <InputText type="password" class="form-control" id="password" @bind-Value="cidadao.Password" required></InputText>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Efetuar Login</button>
+        <button type="reset" class="btn btn-outline-primary">Limpar</button>
+        <button @onclick="EfetuarCadastro" class="btn btn-outline-dark">Não Possui uma conta? Cadastre-se</button>
+    </div>
+</EditForm>
+
+
+
+
+@code {
+    private LoginCidadaoViewModel cidadao = new LoginCidadaoViewModel();
+    [CascadingParameter] public IModalService ModalService { get; set; }
+
+    public async Task PainelCidadao()
+    {
+        if (ChecarSeExisteLetra(cidadao.Cpf))
+        {
+            toast.ShowError("Campo CPF somente números");
+            return;
+        }
+        toast.ShowInfo("Fazendo Login..");
+        var response =  await http.PostAsJsonAsync<LoginCidadaoViewModel>("login/cidadao", cidadao);
+
+
+        if(response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var token = await response.Content.ReadAsStringAsync();
+            if(!string.IsNullOrEmpty(token))
+            {
+                toast.ShowSuccess("Login Efetuado..");
+                await localStorage.SetItemAsync("token", token);
+                http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                NavigationManager.NavigateTo("/painel/cidadao");
+            }
+            else
+            {
+                toast.ShowError("Usuário não encontrado");
+                ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>("Verifique seus dados e tente novamente");
+            }
+        }
+        else
+        {
+            toast.ShowError("Dados Inválidos");
+            ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>("Verifique seus dados e tente novamente");
+        }
+
+    }
+    public void EfetuarCadastro()
+    {
+        NavigationManager.NavigateTo("/cadastro/cidadao");
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+

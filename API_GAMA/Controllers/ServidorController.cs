@@ -84,8 +84,8 @@ namespace API_GAMA.Controllers
         }
 
         // PUT api/<ServidorController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Servidor servidor)
+        [HttpPut]
+        public async Task<IActionResult> Put(Servidor servidor)
         {
             try
             {

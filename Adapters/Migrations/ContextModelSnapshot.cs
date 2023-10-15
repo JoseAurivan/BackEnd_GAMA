@@ -315,6 +315,9 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
                     b.HasIndex("EnderecoId")
                         .IsUnique();
 
@@ -353,7 +356,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "Solicitacao")
                         .WithOne()
                         .HasForeignKey("Core.Entities.DTOChamado", "SolicitacaoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Solicitacao");
@@ -393,13 +396,13 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.DTOCidadao", "Autor")
                         .WithOne()
                         .HasForeignKey("Core.Entities.DTOReclamacao", "AutorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.DTOSecretaria", "Destino")
                         .WithOne()
                         .HasForeignKey("Core.Entities.DTOReclamacao", "DestinoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Autor");
@@ -423,13 +426,13 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.DTOCargo", "Cargo")
                         .WithMany("Servidors")
                         .HasForeignKey("CargoId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.DTOSecretaria", "Secretaria")
                         .WithMany("Servidores")
                         .HasForeignKey("SecretariaId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Infrastructure.DataBaseModels.Entities.DTOUser", "User")
@@ -450,18 +453,18 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.DTOServidor", "AtendidoPor")
                         .WithOne()
                         .HasForeignKey("Infrastructure.DataBaseModels.Entities.DTOSolicitacao", "AtendidoPorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Core.Entities.DTOSecretaria", "SecretariaDestino")
                         .WithMany("Solicitacoes")
                         .HasForeignKey("SecretariaId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Infrastructure.DataBaseModels.Entities.DTOUser", "SolicitadoPor")
                         .WithMany("Solicitacao")
                         .HasForeignKey("SolicitadoPorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AtendidoPor");

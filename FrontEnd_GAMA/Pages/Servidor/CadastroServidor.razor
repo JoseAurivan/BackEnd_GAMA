@@ -1,0 +1,18 @@
+﻿@page "/cadastro/servidor"
+@inject HttpClient http
+@inject NavigationManager navigation
+@using Core.Entities
+@using SuporteFront
+<h3>Cadastro de Servidor</h3>
+
+<CadastroServidorComponent servidor="@servidor">
+
+</CadastroServidorComponent>
+
+
+
+
+@code {
+    public ServidorViewModel servidor = new ServidorViewModel();
+
+}
